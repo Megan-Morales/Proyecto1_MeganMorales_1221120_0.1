@@ -11,3 +11,4 @@ int main(array<String^>^ args)
 	Proyecto1MeganMorales122112001::MyForm mainForm;
 	Application::Run(% mainForm);
 	return 0;
+}
