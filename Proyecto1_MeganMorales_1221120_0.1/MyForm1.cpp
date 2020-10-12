@@ -12,3 +12,4 @@ int main1(array<String^>^ args)
 	Application::Run(% mainForm);
 	return 0;
 }
+
