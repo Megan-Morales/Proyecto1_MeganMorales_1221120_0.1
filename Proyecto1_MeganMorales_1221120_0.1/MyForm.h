@@ -1,4 +1,6 @@
 #pragma once
+#include "MyForm1.h"
+
 
 namespace Proyecto1MeganMorales122112001 {
 
@@ -10,11 +12,18 @@ namespace Proyecto1MeganMorales122112001 {
 	using namespace System::Drawing;
 	using namespace System::IO;
 
-	/// <summary>
-	/// Resumen de MyForm
-	/// </summary>
+	
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
+	
+
+
+
+
+
+
+
+
 	public:
 		MyForm(void)
 		{
@@ -57,13 +66,6 @@ namespace Proyecto1MeganMorales122112001 {
 
 
 	protected:
-
-
-
-
-
-
-
 
 	private:
 		/// <summary>
@@ -129,6 +131,7 @@ namespace Proyecto1MeganMorales122112001 {
 			this->btMoFácil->TabIndex = 3;
 			this->btMoFácil->Text = L"MODO FÁCIL";
 			this->btMoFácil->UseVisualStyleBackColor = false;
+			this->btMoFácil->Click += gcnew System::EventHandler(this, &MyForm::btMoFácil_Click);
 			// 
 			// label3
 			// 
@@ -244,11 +247,19 @@ namespace Proyecto1MeganMorales122112001 {
 #pragma endregion
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		
+			
 	}
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	
 	this->Close();
+}
+private: System::Void btMoFácil_Click(System::Object^ sender, System::EventArgs^ e) {
+	MyForm1 ^ My = gcnew MyForm1();	
+	this->Hide();
+	My->Show();
+	
+
+
 }
 };
 
