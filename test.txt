@@ -1,1 +1,1 @@
-B,B,W,Y,W,X,B,B,Y,X,W,W,B,Y
+B,B,G,W,Y,W,X,B,B,Y,X,W,W,B,Y,X,G,Y,B,X,P,Y,G,R,X,Z,N,Z,B,X,B,P,P,G,Z,N,X,R,R,R

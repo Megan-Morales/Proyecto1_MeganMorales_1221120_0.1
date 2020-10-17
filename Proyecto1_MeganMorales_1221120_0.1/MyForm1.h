@@ -24,6 +24,9 @@ namespace Proyecto1MeganMorales122112001 {
 	public: List* milist3;
 	public: List* milist4;
 	public: List* milist5;
+	public: List* milist6;
+	public: List* milist7;
+	public: List* milist8;
 
 		  /*Pilas para manejo de colores*/
 	public: List* pilaNegra;
@@ -34,6 +37,27 @@ namespace Proyecto1MeganMorales122112001 {
 	public: List* pilaRojo;
 	public: List* pilaMorado;
 	public: List* pilaAzulM;
+	private: System::Windows::Forms::DataGridView^ dataGridView7;
+	public:
+	private: System::Windows::Forms::DataGridView^ dataGridView8;
+	private: System::Windows::Forms::DataGridView^ dataGridView9;
+	private: System::Windows::Forms::DataGridView^ dataGridView10;
+	private: System::Windows::Forms::DataGridView^ dataGridView11;
+	private: System::Windows::Forms::DataGridView^ dataGridView12;
+	private: System::Windows::Forms::DataGridView^ dataGridView13;
+	private: System::Windows::Forms::DataGridView^ dataGridView14;
+	private: System::Windows::Forms::DataGridView^ dataGridView15;
+	private: System::Windows::Forms::DataGridView^ dataGridView16;
+	private: System::Windows::Forms::Label^ label15;
+	private: System::Windows::Forms::Label^ label16;
+	private: System::Windows::Forms::Label^ label17;
+	private: System::Windows::Forms::Label^ label18;
+	private: System::Windows::Forms::Label^ label19;
+	private: System::Windows::Forms::Label^ label20;
+	private: System::Windows::Forms::Label^ label21;
+	private: System::Windows::Forms::Label^ label22;
+	private: System::Windows::Forms::Label^ label23;
+	private: System::Windows::Forms::Label^ label24;
 
 		  /*Para almacenar el historial de movimientos*/
 		  
@@ -44,6 +68,7 @@ namespace Proyecto1MeganMorales122112001 {
 		MyForm1(void)
 		{
 			InitializeComponent();
+			
 			ReestablecerColor();
 			reporte = "";
 			/*Se inicializan pilas de mapa inicial*/
@@ -76,6 +101,21 @@ namespace Proyecto1MeganMorales122112001 {
 			milist5->count = 0;
 			milist5->start = nullptr;
 			milist5->end = nullptr;
+
+			milist6 = new List();
+			milist6->count = 0;
+			milist6->start = nullptr;
+			milist6->end = nullptr;
+
+			milist7 = new List();
+			milist7->count = 0;
+			milist7->start = nullptr;
+			milist7->end = nullptr;
+
+			milist8 = new List();
+			milist8->count = 0;
+			milist8->start = nullptr;
+			milist8->end = nullptr;
 			/*Se inicializan pilas para colores*/
 
 			pilaNegra = new List();
@@ -151,8 +191,7 @@ private: System::Windows::Forms::Button^ btnScola;
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::Label^ label9;
-private: System::Windows::Forms::ListBox^ lstLista;
-
+	private: System::Windows::Forms::ListBox^ lstLista;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Label^ label10;
 	private: System::Windows::Forms::Button^ button5;
@@ -166,20 +205,10 @@ private: System::Windows::Forms::ListBox^ lstLista;
 	private: System::Windows::Forms::Button^ button7;
 	private: System::Windows::Forms::Button^ button8;
 	private: System::Windows::Forms::SaveFileDialog^ sfdExportar;
-
 	protected:
-
 	private:
-		/// <summary>
-		/// Variable del diseñador necesaria.
-		/// </summary>
 		System::ComponentModel::Container ^components;
-
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Método necesario para admitir el Diseñador. No se puede modificar
-		/// el contenido de este método con el editor de código.
-		/// </summary>
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm1::typeid));
@@ -215,12 +244,42 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->button8 = (gcnew System::Windows::Forms::Button());
+			this->dataGridView7 = (gcnew System::Windows::Forms::DataGridView());
+			this->dataGridView8 = (gcnew System::Windows::Forms::DataGridView());
+			this->dataGridView9 = (gcnew System::Windows::Forms::DataGridView());
+			this->dataGridView10 = (gcnew System::Windows::Forms::DataGridView());
+			this->dataGridView11 = (gcnew System::Windows::Forms::DataGridView());
+			this->dataGridView12 = (gcnew System::Windows::Forms::DataGridView());
+			this->dataGridView13 = (gcnew System::Windows::Forms::DataGridView());
+			this->dataGridView14 = (gcnew System::Windows::Forms::DataGridView());
+			this->dataGridView15 = (gcnew System::Windows::Forms::DataGridView());
+			this->dataGridView16 = (gcnew System::Windows::Forms::DataGridView());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->label16 = (gcnew System::Windows::Forms::Label());
+			this->label17 = (gcnew System::Windows::Forms::Label());
+			this->label18 = (gcnew System::Windows::Forms::Label());
+			this->label19 = (gcnew System::Windows::Forms::Label());
+			this->label20 = (gcnew System::Windows::Forms::Label());
+			this->label21 = (gcnew System::Windows::Forms::Label());
+			this->label22 = (gcnew System::Windows::Forms::Label());
+			this->label23 = (gcnew System::Windows::Forms::Label());
+			this->label24 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView4))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView5))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView6))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView7))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView8))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView9))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView10))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView11))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView12))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView13))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView14))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView15))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView16))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// btnIniciar
@@ -254,7 +313,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->btnSManual->BackColor = System::Drawing::Color::White;
 			this->btnSManual->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnSManual->Location = System::Drawing::Point(505, 119);
+			this->btnSManual->Location = System::Drawing::Point(505, 201);
 			this->btnSManual->Name = L"btnSManual";
 			this->btnSManual->Size = System::Drawing::Size(87, 39);
 			this->btnSManual->TabIndex = 2;
@@ -267,7 +326,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->btnSpila->BackColor = System::Drawing::Color::White;
 			this->btnSpila->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnSpila->Location = System::Drawing::Point(488, 423);
+			this->btnSpila->Location = System::Drawing::Point(505, 591);
 			this->btnSpila->Name = L"btnSpila";
 			this->btnSpila->Size = System::Drawing::Size(116, 50);
 			this->btnSpila->TabIndex = 3;
@@ -280,7 +339,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->btnScola->BackColor = System::Drawing::Color::White;
 			this->btnScola->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnScola->Location = System::Drawing::Point(488, 369);
+			this->btnScola->Location = System::Drawing::Point(505, 537);
 			this->btnScola->Name = L"btnScola";
 			this->btnScola->Size = System::Drawing::Size(116, 50);
 			this->btnScola->TabIndex = 4;
@@ -292,7 +351,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			// 
 			this->dataGridView1->BackgroundColor = System::Drawing::Color::LightSteelBlue;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(38, 177);
+			this->dataGridView1->Location = System::Drawing::Point(37, 186);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->Size = System::Drawing::Size(256, 25);
@@ -302,7 +361,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			// 
 			this->dataGridView2->BackgroundColor = System::Drawing::Color::LightSteelBlue;
 			this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView2->Location = System::Drawing::Point(38, 201);
+			this->dataGridView2->Location = System::Drawing::Point(37, 208);
 			this->dataGridView2->Name = L"dataGridView2";
 			this->dataGridView2->RowHeadersWidth = 51;
 			this->dataGridView2->Size = System::Drawing::Size(256, 23);
@@ -312,10 +371,10 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			// 
 			this->dataGridView3->BackgroundColor = System::Drawing::Color::LightSteelBlue;
 			this->dataGridView3->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView3->Location = System::Drawing::Point(38, 222);
+			this->dataGridView3->Location = System::Drawing::Point(37, 230);
 			this->dataGridView3->Name = L"dataGridView3";
 			this->dataGridView3->RowHeadersWidth = 51;
-			this->dataGridView3->Size = System::Drawing::Size(256, 19);
+			this->dataGridView3->Size = System::Drawing::Size(256, 26);
 			this->dataGridView3->TabIndex = 7;
 			// 
 			// label2
@@ -335,7 +394,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			// 
 			this->dataGridView4->BackgroundColor = System::Drawing::Color::LightSteelBlue;
 			this->dataGridView4->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView4->Location = System::Drawing::Point(38, 381);
+			this->dataGridView4->Location = System::Drawing::Point(36, 489);
 			this->dataGridView4->Name = L"dataGridView4";
 			this->dataGridView4->RowHeadersWidth = 51;
 			this->dataGridView4->Size = System::Drawing::Size(256, 25);
@@ -345,7 +404,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			// 
 			this->dataGridView5->BackgroundColor = System::Drawing::Color::LightSteelBlue;
 			this->dataGridView5->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView5->Location = System::Drawing::Point(38, 405);
+			this->dataGridView5->Location = System::Drawing::Point(36, 513);
 			this->dataGridView5->Name = L"dataGridView5";
 			this->dataGridView5->RowHeadersWidth = 51;
 			this->dataGridView5->Size = System::Drawing::Size(256, 23);
@@ -355,10 +414,10 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			// 
 			this->dataGridView6->BackgroundColor = System::Drawing::Color::LightSteelBlue;
 			this->dataGridView6->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView6->Location = System::Drawing::Point(38, 427);
+			this->dataGridView6->Location = System::Drawing::Point(36, 535);
 			this->dataGridView6->Name = L"dataGridView6";
 			this->dataGridView6->RowHeadersWidth = 51;
-			this->dataGridView6->Size = System::Drawing::Size(256, 19);
+			this->dataGridView6->Size = System::Drawing::Size(256, 27);
 			this->dataGridView6->TabIndex = 11;
 			// 
 			// label3
@@ -367,7 +426,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label3->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(8, 186);
+			this->label3->Location = System::Drawing::Point(11, 186);
 			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(24, 16);
@@ -380,7 +439,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label4->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(8, 202);
+			this->label4->Location = System::Drawing::Point(11, 211);
 			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(24, 16);
@@ -393,7 +452,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label5->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(8, 218);
+			this->label5->Location = System::Drawing::Point(11, 236);
 			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(24, 16);
@@ -406,7 +465,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label6->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(9, 387);
+			this->label6->Location = System::Drawing::Point(7, 490);
 			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(24, 16);
@@ -419,7 +478,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label7->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(9, 403);
+			this->label7->Location = System::Drawing::Point(7, 513);
 			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(24, 16);
@@ -432,7 +491,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label8->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label8->Location = System::Drawing::Point(9, 419);
+			this->label8->Location = System::Drawing::Point(7, 538);
 			this->label8->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(24, 16);
@@ -445,7 +504,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label9->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label9->Location = System::Drawing::Point(122, 349);
+			this->label9->Location = System::Drawing::Point(120, 457);
 			this->label9->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(86, 16);
@@ -455,7 +514,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			// lstLista
 			// 
 			this->lstLista->FormattingEnabled = true;
-			this->lstLista->Location = System::Drawing::Point(737, 157);
+			this->lstLista->Location = System::Drawing::Point(741, 236);
 			this->lstLista->Name = L"lstLista";
 			this->lstLista->Size = System::Drawing::Size(128, 316);
 			this->lstLista->TabIndex = 19;
@@ -466,7 +525,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->button2->BackColor = System::Drawing::Color::White;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(763, 479);
+			this->button2->Location = System::Drawing::Point(767, 558);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(87, 39);
 			this->button2->TabIndex = 20;
@@ -480,7 +539,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label10->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label10->Location = System::Drawing::Point(760, 129);
+			this->label10->Location = System::Drawing::Point(764, 208);
 			this->label10->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(74, 16);
@@ -492,7 +551,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->button5->BackColor = System::Drawing::Color::White;
 			this->button5->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button5->Location = System::Drawing::Point(602, 174);
+			this->button5->Location = System::Drawing::Point(602, 256);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(46, 25);
 			this->button5->TabIndex = 22;
@@ -505,7 +564,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->button6->BackColor = System::Drawing::Color::White;
 			this->button6->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button6->Location = System::Drawing::Point(602, 200);
+			this->button6->Location = System::Drawing::Point(602, 282);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(46, 25);
 			this->button6->TabIndex = 23;
@@ -515,14 +574,14 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(427, 204);
+			this->textBox1->Location = System::Drawing::Point(427, 286);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(19, 20);
 			this->textBox1->TabIndex = 24;
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(538, 205);
+			this->textBox2->Location = System::Drawing::Point(538, 287);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(19, 20);
 			this->textBox2->TabIndex = 25;
@@ -533,7 +592,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label11->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label11->Location = System::Drawing::Point(444, 177);
+			this->label11->Location = System::Drawing::Point(444, 259);
 			this->label11->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(73, 16);
@@ -546,7 +605,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label12->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label12->Location = System::Drawing::Point(405, 205);
+			this->label12->Location = System::Drawing::Point(405, 287);
 			this->label12->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label12->Name = L"label12";
 			this->label12->Size = System::Drawing::Size(17, 16);
@@ -559,7 +618,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label13->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label13->Location = System::Drawing::Point(472, 206);
+			this->label13->Location = System::Drawing::Point(472, 288);
 			this->label13->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label13->Name = L"label13";
 			this->label13->Size = System::Drawing::Size(17, 16);
@@ -572,7 +631,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label14->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label14->Location = System::Drawing::Point(516, 205);
+			this->label14->Location = System::Drawing::Point(516, 287);
 			this->label14->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label14->Name = L"label14";
 			this->label14->Size = System::Drawing::Size(17, 16);
@@ -584,7 +643,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->button7->BackColor = System::Drawing::Color::MistyRose;
 			this->button7->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button7->Location = System::Drawing::Point(756, 3);
+			this->button7->Location = System::Drawing::Point(791, 8);
 			this->button7->Name = L"button7";
 			this->button7->Size = System::Drawing::Size(78, 39);
 			this->button7->TabIndex = 30;
@@ -597,7 +656,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->button8->BackColor = System::Drawing::Color::MistyRose;
 			this->button8->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button8->Location = System::Drawing::Point(756, 47);
+			this->button8->Location = System::Drawing::Point(791, 52);
 			this->button8->Name = L"button8";
 			this->button8->Size = System::Drawing::Size(78, 39);
 			this->button8->TabIndex = 31;
@@ -605,12 +664,262 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->button8->UseVisualStyleBackColor = false;
 			this->button8->Click += gcnew System::EventHandler(this, &MyForm1::button8_Click);
 			// 
+			// dataGridView7
+			// 
+			this->dataGridView7->BackgroundColor = System::Drawing::Color::LightSteelBlue;
+			this->dataGridView7->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView7->Location = System::Drawing::Point(37, 255);
+			this->dataGridView7->Name = L"dataGridView7";
+			this->dataGridView7->RowHeadersWidth = 51;
+			this->dataGridView7->Size = System::Drawing::Size(256, 22);
+			this->dataGridView7->TabIndex = 32;
+			// 
+			// dataGridView8
+			// 
+			this->dataGridView8->BackgroundColor = System::Drawing::Color::LightSteelBlue;
+			this->dataGridView8->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView8->Location = System::Drawing::Point(37, 274);
+			this->dataGridView8->Name = L"dataGridView8";
+			this->dataGridView8->RowHeadersWidth = 51;
+			this->dataGridView8->Size = System::Drawing::Size(256, 22);
+			this->dataGridView8->TabIndex = 33;
+			// 
+			// dataGridView9
+			// 
+			this->dataGridView9->BackgroundColor = System::Drawing::Color::LightSteelBlue;
+			this->dataGridView9->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView9->Location = System::Drawing::Point(37, 293);
+			this->dataGridView9->Name = L"dataGridView9";
+			this->dataGridView9->RowHeadersWidth = 51;
+			this->dataGridView9->Size = System::Drawing::Size(256, 22);
+			this->dataGridView9->TabIndex = 34;
+			// 
+			// dataGridView10
+			// 
+			this->dataGridView10->BackgroundColor = System::Drawing::Color::LightSteelBlue;
+			this->dataGridView10->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView10->Location = System::Drawing::Point(37, 312);
+			this->dataGridView10->Name = L"dataGridView10";
+			this->dataGridView10->RowHeadersWidth = 51;
+			this->dataGridView10->Size = System::Drawing::Size(256, 22);
+			this->dataGridView10->TabIndex = 36;
+			// 
+			// dataGridView11
+			// 
+			this->dataGridView11->BackgroundColor = System::Drawing::Color::LightSteelBlue;
+			this->dataGridView11->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView11->Location = System::Drawing::Point(37, 331);
+			this->dataGridView11->Name = L"dataGridView11";
+			this->dataGridView11->RowHeadersWidth = 51;
+			this->dataGridView11->Size = System::Drawing::Size(256, 22);
+			this->dataGridView11->TabIndex = 35;
+			// 
+			// dataGridView12
+			// 
+			this->dataGridView12->BackgroundColor = System::Drawing::Color::LightSteelBlue;
+			this->dataGridView12->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView12->Location = System::Drawing::Point(36, 559);
+			this->dataGridView12->Name = L"dataGridView12";
+			this->dataGridView12->RowHeadersWidth = 51;
+			this->dataGridView12->Size = System::Drawing::Size(256, 25);
+			this->dataGridView12->TabIndex = 37;
+			// 
+			// dataGridView13
+			// 
+			this->dataGridView13->BackgroundColor = System::Drawing::Color::LightSteelBlue;
+			this->dataGridView13->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView13->Location = System::Drawing::Point(36, 580);
+			this->dataGridView13->Name = L"dataGridView13";
+			this->dataGridView13->RowHeadersWidth = 51;
+			this->dataGridView13->Size = System::Drawing::Size(256, 25);
+			this->dataGridView13->TabIndex = 38;
+			// 
+			// dataGridView14
+			// 
+			this->dataGridView14->BackgroundColor = System::Drawing::Color::LightSteelBlue;
+			this->dataGridView14->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView14->Location = System::Drawing::Point(36, 600);
+			this->dataGridView14->Name = L"dataGridView14";
+			this->dataGridView14->RowHeadersWidth = 51;
+			this->dataGridView14->Size = System::Drawing::Size(256, 25);
+			this->dataGridView14->TabIndex = 39;
+			// 
+			// dataGridView15
+			// 
+			this->dataGridView15->BackgroundColor = System::Drawing::Color::LightSteelBlue;
+			this->dataGridView15->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView15->Location = System::Drawing::Point(36, 622);
+			this->dataGridView15->Name = L"dataGridView15";
+			this->dataGridView15->RowHeadersWidth = 51;
+			this->dataGridView15->Size = System::Drawing::Size(256, 25);
+			this->dataGridView15->TabIndex = 40;
+			// 
+			// dataGridView16
+			// 
+			this->dataGridView16->BackgroundColor = System::Drawing::Color::LightSteelBlue;
+			this->dataGridView16->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView16->Location = System::Drawing::Point(36, 643);
+			this->dataGridView16->Name = L"dataGridView16";
+			this->dataGridView16->RowHeadersWidth = 51;
+			this->dataGridView16->Size = System::Drawing::Size(256, 25);
+			this->dataGridView16->TabIndex = 41;
+			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->BackColor = System::Drawing::SystemColors::HighlightText;
+			this->label15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label15->Location = System::Drawing::Point(11, 293);
+			this->label15->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(24, 16);
+			this->label15->TabIndex = 44;
+			this->label15->Text = L"P5";
+			// 
+			// label16
+			// 
+			this->label16->AutoSize = true;
+			this->label16->BackColor = System::Drawing::SystemColors::HighlightText;
+			this->label16->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label16->Location = System::Drawing::Point(11, 277);
+			this->label16->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(24, 16);
+			this->label16->TabIndex = 43;
+			this->label16->Text = L"P4";
+			// 
+			// label17
+			// 
+			this->label17->AutoSize = true;
+			this->label17->BackColor = System::Drawing::SystemColors::HighlightText;
+			this->label17->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label17->Location = System::Drawing::Point(11, 255);
+			this->label17->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label17->Name = L"label17";
+			this->label17->Size = System::Drawing::Size(24, 16);
+			this->label17->TabIndex = 42;
+			this->label17->Text = L"P3";
+			// 
+			// label18
+			// 
+			this->label18->AutoSize = true;
+			this->label18->BackColor = System::Drawing::SystemColors::HighlightText;
+			this->label18->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label18->Location = System::Drawing::Point(7, 568);
+			this->label18->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label18->Name = L"label18";
+			this->label18->Size = System::Drawing::Size(24, 16);
+			this->label18->TabIndex = 47;
+			this->label18->Text = L"P3";
+			// 
+			// label19
+			// 
+			this->label19->AutoSize = true;
+			this->label19->BackColor = System::Drawing::SystemColors::HighlightText;
+			this->label19->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label19->Location = System::Drawing::Point(11, 337);
+			this->label19->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label19->Name = L"label19";
+			this->label19->Size = System::Drawing::Size(24, 16);
+			this->label19->TabIndex = 46;
+			this->label19->Text = L"P7";
+			// 
+			// label20
+			// 
+			this->label20->AutoSize = true;
+			this->label20->BackColor = System::Drawing::SystemColors::HighlightText;
+			this->label20->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label20->Location = System::Drawing::Point(11, 318);
+			this->label20->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label20->Name = L"label20";
+			this->label20->Size = System::Drawing::Size(24, 16);
+			this->label20->TabIndex = 45;
+			this->label20->Text = L"P6";
+			// 
+			// label21
+			// 
+			this->label21->AutoSize = true;
+			this->label21->BackColor = System::Drawing::SystemColors::HighlightText;
+			this->label21->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label21->Location = System::Drawing::Point(7, 652);
+			this->label21->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label21->Name = L"label21";
+			this->label21->Size = System::Drawing::Size(24, 16);
+			this->label21->TabIndex = 51;
+			this->label21->Text = L"P7";
+			// 
+			// label22
+			// 
+			this->label22->AutoSize = true;
+			this->label22->BackColor = System::Drawing::SystemColors::HighlightText;
+			this->label22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label22->Location = System::Drawing::Point(7, 631);
+			this->label22->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label22->Name = L"label22";
+			this->label22->Size = System::Drawing::Size(24, 16);
+			this->label22->TabIndex = 50;
+			this->label22->Text = L"P6";
+			// 
+			// label23
+			// 
+			this->label23->AutoSize = true;
+			this->label23->BackColor = System::Drawing::SystemColors::HighlightText;
+			this->label23->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label23->Location = System::Drawing::Point(7, 608);
+			this->label23->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label23->Name = L"label23";
+			this->label23->Size = System::Drawing::Size(24, 16);
+			this->label23->TabIndex = 49;
+			this->label23->Text = L"P5";
+			// 
+			// label24
+			// 
+			this->label24->AutoSize = true;
+			this->label24->BackColor = System::Drawing::SystemColors::HighlightText;
+			this->label24->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label24->Location = System::Drawing::Point(7, 589);
+			this->label24->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label24->Name = L"label24";
+			this->label24->Size = System::Drawing::Size(24, 16);
+			this->label24->TabIndex = 48;
+			this->label24->Text = L"P4";
+			// 
 			// MyForm1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(881, 552);
+			this->ClientSize = System::Drawing::Size(881, 722);
+			this->Controls->Add(this->label21);
+			this->Controls->Add(this->label22);
+			this->Controls->Add(this->label23);
+			this->Controls->Add(this->label24);
+			this->Controls->Add(this->label18);
+			this->Controls->Add(this->label19);
+			this->Controls->Add(this->label20);
+			this->Controls->Add(this->label15);
+			this->Controls->Add(this->label16);
+			this->Controls->Add(this->label17);
+			this->Controls->Add(this->dataGridView16);
+			this->Controls->Add(this->dataGridView15);
+			this->Controls->Add(this->dataGridView14);
+			this->Controls->Add(this->dataGridView13);
+			this->Controls->Add(this->dataGridView12);
+			this->Controls->Add(this->dataGridView10);
+			this->Controls->Add(this->dataGridView11);
+			this->Controls->Add(this->dataGridView9);
+			this->Controls->Add(this->dataGridView8);
+			this->Controls->Add(this->dataGridView7);
 			this->Controls->Add(this->button8);
 			this->Controls->Add(this->button7);
 			this->Controls->Add(this->label14);
@@ -643,7 +952,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->Controls->Add(this->btnSManual);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->btnIniciar);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"MyForm1";
 			this->Text = L"MyForm1";
 			this->Load += gcnew System::EventHandler(this, &MyForm1::MyForm1_Load);
@@ -653,6 +962,16 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView4))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView5))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView6))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView7))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView8))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView9))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView10))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView11))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView12))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView13))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView14))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView15))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView16))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -678,249 +997,6 @@ private: System::Windows::Forms::ListBox^ lstLista;
 	}
 private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }
-	   
-	   
-	   /* Método mostrar pasos en ListBox
-		return void
-		*/
-void LlenarListBox() {
-	Console::WriteLine(reporte);
-	array<String^>^ pila = reporte->Split(',');
-	for each (String ^ temp in pila) {
-	lstLista->Items->Add(temp);
-	}
-
-}
-
-	   /* Método para recorrer pilas y llenar pilas de colores
-		@param tipoSolucion corresponde a la solucion a relizar (0 = pila, 1 = cola)
-		return void
-		*/
-void solucionAutomatica(int tipoSolucion) {
-
-	if (milist1->count > 0) {
-		for (int i = 0; i = milist1->count; i++) {
-			Node* temp;
-			if (tipoSolucion == 0) {
-				temp = milist1->ExtractAtEnd();
-			}
-			else {
-				temp = milist1->ExtractAtStart();
-			}
-
-				   // Console::WriteLine("tamaño pila1: " + milist1->count);
-				   // Console::WriteLine("data extraido: " + temp->value);
-			validarColor(temp->value, "1");
-
-		}
-	}
-
-	if (milist2->count > 0) {
-		for (int i = 0; i = milist2->count; i++) {
-			Node* temp;
-			if (tipoSolucion == 0) {
-				temp = milist2->ExtractAtEnd();
-			}
-		else {
-				temp = milist2->ExtractAtStart();
-		}
-		validarColor(temp->value, "2");
-
-		}
-	}
-
-	if (milist3->count > 0) {
-		for (int i = 0; i = milist3->count; i++) {
-			Node* temp;
-			if (tipoSolucion == 0) {
-			temp = milist3->ExtractAtEnd();
-			}
-			else {
-			temp = milist3->ExtractAtStart();
-			}
-				   // Console::WriteLine("tamaño pila3: " + milist3->count);
-				   // Console::WriteLine("data extraido: " + temp->value);
-			validarColor(temp->value, "3");
-		}
-	}
-	if (milist4->count > 0) {
-		for (int i = 0; i = milist4->count; i++) {
-			Node* temp;
-			if (tipoSolucion == 0) {
-				temp = milist4->ExtractAtEnd();
-			}
-			else {
-				temp = milist4->ExtractAtStart();
-			}
-			// Console::WriteLine("tamaño pila3: " + milist3->count);
-			// Console::WriteLine("data extraido: " + temp->value);
-			validarColor(temp->value, "4");
-		}
-	}
-}
-
-void validarColor(int valor, String^ noPila) {
-
-	if (valor == 1) {
-		pilaAmarillo->InsertAtStart(valor);
-		reporte += "P-" + noPila + "-PY,";
-		Pintardatagrid(1, 1, 4);
-		return;
-
-	}
-	if (valor == 2) {
-		pilaVerde->InsertAtStart(valor);
-		reporte += "P-" + noPila + "-PG,";
-		return;
-
-	}
-	if (valor == 3) {
-		pilaMorado->InsertAtStart(valor);
-		reporte += "P-" + noPila + "-PP,";
-		return;
-	}
-	if (valor == 4) {
-		pilaRojo->InsertAtStart(valor);
-		reporte += "P-" + noPila + "-PR,";
-		return;
-	}
-	if (valor == 5) {
-		pilaNegra->InsertAtStart(valor);
-		reporte += "P-" + noPila + "-PB,";
-		Pintardatagrid(1, 5, 5);
-		return;
-	}
-	if (valor == 6) {
-		pilaAzul->InsertAtStart(valor);
-		reporte += "P-" + noPila + "-PZ,";
-		return;
-	}
-	if (valor == 7) {
-		pilaBlanco->InsertAtStart(valor);
-		reporte += "P-" + noPila + "-PW,";
-		Pintardatagrid(1, 7, 6);
-		return;
-	}
-	if (valor == 8) {
-		pilaAzulM->InsertAtStart(valor);
-		reporte += "P-" + noPila + "-PN,";
-		return;
-	}
-
-}
-
-private: void ReestablecerColor() {
-	dataGridView4->Rows->Clear();
-	dataGridView4->Columns->Clear();
-	dataGridView4->ColumnHeadersVisible = false;
-	dataGridView4->RowHeadersVisible = false;
-
-	dataGridView5->Rows->Clear();
-	dataGridView5->Columns->Clear();
-	dataGridView5->ColumnHeadersVisible = false;
-	dataGridView5->RowHeadersVisible = false;
-
-	dataGridView6->Rows->Clear();
-	dataGridView6->Columns->Clear();
-	dataGridView6->ColumnHeadersVisible = false;
-	dataGridView6->RowHeadersVisible = false;
-};
-
-private: void ReestablecerMatriz() {
-	dataGridView1->Rows->Clear();
-	dataGridView1->Columns->Clear();
-	dataGridView1->ColumnHeadersVisible = false;
-	dataGridView1->RowHeadersVisible = false;
-
-	dataGridView2->Rows->Clear();
-	dataGridView2->Columns->Clear();
-	dataGridView2->ColumnHeadersVisible = false;
-	dataGridView2->RowHeadersVisible = false;
-
-	dataGridView3->Rows->Clear();
-	dataGridView3->Columns->Clear();
-	dataGridView3->ColumnHeadersVisible = false;
-	dataGridView3->RowHeadersVisible = false;
-
-};
-
-void Pintardatagrid(int pColumnas, int pColor, int pNoGrid){
-		int numFilas = 0;
-		int numColumnas = pColumnas;
-
-		/*ReestablecerMatriz();*/	//Método que borra el contenido de la matriz
-		//Se crean las columnas de la matriz
-
-		if (numColumnas > 0) {
-			for (int i = 0; i < numColumnas; i++) {
-				//Se crea una columna
-				DataGridViewColumn^ nuevacolumna = gcnew DataGridViewColumn();
-				nuevacolumna->Width = 20;
-				
-				if (pColor == 1) {
-					nuevacolumna->DefaultCellStyle->BackColor = Color::Yellow;
-				}
-				else if (pColor == 2) {
-					nuevacolumna->DefaultCellStyle->BackColor = Color::Green;
-				}
-				else if (pColor == 3) {
-					nuevacolumna->DefaultCellStyle->BackColor = Color::Purple;
-				}
-				else if (pColor == 4) {
-					nuevacolumna->DefaultCellStyle->BackColor = Color::Red;
-				}
-				else if (pColor == 5) {
-					nuevacolumna->DefaultCellStyle->BackColor = Color::Black;
-				}
-				else if (pColor == 6) {
-					nuevacolumna->DefaultCellStyle->BackColor = Color::Blue;
-				}
-				else if (pColor == 7) {
-					nuevacolumna->DefaultCellStyle->BackColor = Color::White;
-				}
-				else if (pColor == 8) {
-					nuevacolumna->DefaultCellStyle->BackColor = Color::DarkBlue;
-				}
-				else if (pColor == 9) {
-					nuevacolumna->DefaultCellStyle->BackColor = Color::Empty;
-				}
-
-				//Se le agrega el tipo de columna que será
-		DataGridViewCell^ cellTemplate = gcnew DataGridViewTextBoxCell();
-		nuevacolumna->CellTemplate = cellTemplate;
-
-				//Se agrega la columna al Datagrid
-				if (pNoGrid == 1) {
-					dataGridView1->Columns->Add(nuevacolumna);
-				}
-				else if (pNoGrid == 2) {
-					dataGridView2->Columns->Add(nuevacolumna);
-				}
-				else if (pNoGrid == 3) {
-					dataGridView3->Columns->Add(nuevacolumna);
-				}
-				else if (pNoGrid == 4) {
-				dataGridView4->Columns->Add(nuevacolumna);
-				}
-				else if (pNoGrid == 5) {
-					dataGridView5->Columns->Add(nuevacolumna);
-				}
-				else if (pNoGrid == 6) {
-					dataGridView6->Columns->Add(nuevacolumna);
-				}
-				
-			}
-		}
-
-			   //Se agregan las filas a la matriz
-			   if (numFilas > 0) {
-				   for (int i = 0; i < numFilas; i++) {
-					   dataGridView1->Rows->Add();
-				   }
-			   }
-}
-
-
 private: System::Void btnScola_Click(System::Object^ sender, System::EventArgs^ e) {
 	btnSManual->Enabled = false;
 	btnSpila->Enabled = false;
@@ -929,16 +1005,6 @@ private: System::Void btnScola_Click(System::Object^ sender, System::EventArgs^ 
 	button6->Enabled = false;
 	solucionAutomatica(1); // 0 significa que soluciona por pila y 1 por cola
 	LlenarListBox();
-
-	/*Console::WriteLine("tamaño pilaAmarillo: " + pilaAmarillo->count);*/
-	/*Console::WriteLine("tamaño pilaVerde: " + pilaVerde->count);
-	Console::WriteLine("tamaño pilaRojo: " + pilaRojo->count);
-	Console::WriteLine("tamaño pilaMorado: " + pilaMorado->count);
-	Console::WriteLine("tamaño pilaNegro: " + pilaNegra->count);
-	Console::WriteLine("tamaño pilaBlanco: " + pilaBlanco->count);
-	Console::WriteLine("tamaño pilaAzul Marino: " + pilaAzulM->count);
-	Console::WriteLine("tamaño pilaAzul: " + pilaAzul->count);*/
-
 }
 private: System::Void btnIniciar_Click(System::Object^ sender, System::EventArgs^ e) {
 	btnSManual->Enabled = true;
@@ -957,6 +1023,9 @@ private: System::Void btnIniciar_Click(System::Object^ sender, System::EventArgs
 			Boolean pila3 = true;
 			Boolean pila4 = true;
 			Boolean pila5 = true;
+			Boolean pila6 = true;
+			Boolean pila7 = true;
+			Boolean pila8 = true;
 			String^ strfilename = openFileDialog1->InitialDirectory + openFileDialog1->FileName;
 			String^ Readfile = File::ReadAllText(strfilename);
 			ReestablecerMatriz();
@@ -1005,51 +1074,58 @@ private: System::Void btnIniciar_Click(System::Object^ sender, System::EventArgs
 					milist3->InsertAtStart(value);
 					Pintardatagrid(1, value, 3);
 				}
-
-				/*else if (pila4) {
+				else if (pila4) {
 					milist4->InsertAtStart(value);
+					Pintardatagrid(1, value, 7);
 				}
 				else if (pila5) {
 					milist5->InsertAtStart(value);
+					Pintardatagrid(1, value, 8);
+				}
+				else if (pila6) {
+					milist6->InsertAtStart(value);
+					Pintardatagrid(1, value, 9);
 
-				}*/
+				}
+				else if (pila7) {
+					milist7->InsertAtStart(value);
+					Pintardatagrid(1, value, 10);
+				}
+				else if (pila8) {
+					milist8->InsertAtStart(value);
+					Pintardatagrid(1, value, 11);
+				}
 
 				Console::WriteLine(temp);
 				if (temp == "X") {
 					if (pila1) {
 						pila1 = false;
 					}
-
 					else if (pila2) {
 						pila2 = false;
 					}
-
 					else if (pila3) {
 						pila3 = false;
 					}
-
 					else if (pila4) {
 						pila4 = false;
-
 					}
-
 					else if (pila5) {
 						pila5 = false;
+					}
+					else if (pila6) {
+						pila6 = false;
+					}
+					else if (pila7) {
+						pila7 = false;
+					}
+					else if (pila8) {
+						pila8 = false;
 						break;
 					}
 					i += 1;
-					Console::WriteLine("Recortar fila");
 				}
 			}
-
-			Console::WriteLine("cantidad de filas: " + i);
-			Console::WriteLine("tamaño mapa: " + miList->count);
-			Console::WriteLine("tamaño pila1: " + milist1->count);
-			Console::WriteLine("tamaño pila2: " + milist2->count);
-			Console::WriteLine("tamaño pila3: " + milist3->count);
-			Console::WriteLine("tamaño pila4: " + milist4->count);
-			Console::WriteLine("tamaño pila5: " + milist5->count);
-
 		}
 	}
 }
@@ -1080,155 +1156,6 @@ private: System::Void btnSManual_Click(System::Object^ sender, System::EventArgs
 	btnScola->Hide();
 	btnSpila->Hide();
 }
-	   /*void desordenar() {
-
-}*/
-	void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
-		
-		if (milist1->count > 0) {
-			
-			if (pilaExtraer == 0 && pilaAgregar == 0) {
-				Node* temp;
-				if (formaExtraer == 0) {
-					/*temp = milist1->ExtractAtEnd();
-					Pintardatagrid(1,temp->value, 1);
-					milist1->InsertAtEnd(temp->value);
-					Pintardatagrid(1, temp->value, 1);*/
-				}
-				else {
-					
-					temp= milist1->ExtractAtEnd();
-					dataGridView1->Columns->Clear();
-						
-					milist1->InsertAtStart(temp->value);
-					dataGridView1->Columns->Clear();
-					Pintardatagrid(1, temp->value, 1);
-				}
-				return;
-			}
-			if (pilaExtraer == 0 && pilaAgregar == 1) {
-				Node* temp;
-				if (formaExtraer == 0) {
-					temp = milist1->ExtractAtStart();
-					milist2->InsertAtStart(temp->value);
-					Pintardatagrid(1, temp->value, 2);
-				}
-				else {
-					temp = milist1->ExtractAtEnd();
-					/*Pintardatagrid(1, temp->value, 1);*/
-					milist2->InsertAtStart(temp->value);
-					Pintardatagrid(1, temp->value, 2);
-				}
-				return;
-			}
-			if (pilaExtraer == 0 && pilaAgregar == 2) {
-				Node* temp;
-				if (formaExtraer == 0) {
-					temp = milist1->ExtractAtStart();
-					milist3->InsertAtStart(temp->value);
-					Pintardatagrid(1, temp->value, 3);
-				}
-				else {
-					temp = milist1->ExtractAtEnd();
-					milist3->InsertAtStart(temp->value);
-					Pintardatagrid(1, temp->value, 3);
-				}
-				return;
-			}
-
-		}
-		if (milist2->count > 0) {
-
-			if (pilaExtraer == 1 && pilaAgregar == 0) {
-				Node* temp;
-				if (formaExtraer == 0) {
-					temp = milist2->ExtractAtStart();
-					milist1->InsertAtStart(temp->value);
-					Pintardatagrid(1, temp->value, 1);
-				}
-				else {
-					temp = milist2->ExtractAtEnd();
-					milist1->InsertAtStart(temp->value);
-					Pintardatagrid(1, temp->value, 1);
-				}
-				return;
-			}
-			if (pilaExtraer == 1 && pilaAgregar == 1) {
-				Node* temp;
-				if (formaExtraer == 0) {
-					/*temp = milist2->ExtractAtEnd();
-					milist2->InsertAtEnd(temp->value);*/
-				}
-				else {
-					temp = milist2->ExtractAtEnd();
-					milist2->InsertAtStart(temp->value);
-					Pintardatagrid(1, temp->value, 2);
-				}
-				return;
-			}
-			if (pilaExtraer == 1 && pilaAgregar == 2) {
-				Node* temp;
-				if (formaExtraer == 0) {
-					temp = milist2->ExtractAtStart();
-					milist3->InsertAtStart(temp->value);
-					Pintardatagrid(1, temp->value, 3);
-				}
-				else {
-					temp = milist2->ExtractAtEnd();
-					milist3->InsertAtStart(temp->value);
-					Pintardatagrid(1, temp->value, 3);
-				}
-				return;
-			}
-
-		}
-		if (milist3->count > 0) {
-
-			if (pilaExtraer == 2 && pilaAgregar == 0) {
-				Node* temp;
-				if (formaExtraer == 0) {
-					temp = milist3->ExtractAtStart();
-					milist1->InsertAtStart(temp->value);
-					Pintardatagrid(1, temp->value, 1);
-				}
-				else {
-					temp = milist3->ExtractAtEnd();
-					milist1->InsertAtStart(temp->value);
-					Pintardatagrid(1, temp->value, 1);
-				}
-				return;
-			}
-			if (pilaExtraer == 2 && pilaAgregar == 1) {
-				Node* temp;
-				if (formaExtraer == 0) {
-					temp = milist3->ExtractAtStart();
-					milist2->InsertAtStart(temp->value);
-					Pintardatagrid(1, temp->value,2);
-				}
-				else {
-					temp = milist3->ExtractAtEnd();
-					milist2->InsertAtStart(temp->value);
-					Pintardatagrid(1, temp->value, 2);
-				}
-				return;
-			}
-			if (pilaExtraer == 2 && pilaAgregar == 2) {
-				Node* temp;
-				if (formaExtraer == 0) {
-					/*temp = milist3->ExtractAtEnd();
-					milist3->InsertAtEnd(temp->value);*/
-				}
-				else {
-					temp = milist3->ExtractAtEnd();
-					milist3->InsertAtStart(temp->value);
-					Pintardatagrid(1, temp->value, 3);
-				}
-				return;
-			}
-
-		}
-		
-}
 private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
 		int p0 = 0;
 		int p1 = 0;
@@ -1250,7 +1177,6 @@ private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e
 	catch (Exception^ e) {
 		MessageBox::Show("Error detectado: " + e->Message, "Valores incorrectos", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
-
 }
 private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
 	int p0 = 0;
@@ -1273,6 +1199,525 @@ private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e
 	catch (Exception^ e) {
 		MessageBox::Show("Error detectado: " + e->Message, "Valores incorrectos", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
+}
+		/* Método mostrar pasos en ListBox
+		return void
+		*/
+void LlenarListBox() {
+	Console::WriteLine(reporte);
+	array<String^>^ pila = reporte->Split(',');
+	for each (String ^ temp in pila) {
+	lstLista->Items->Add(temp);
+	}
+}
+void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
+	if (milist1->count > 0) {
+		if (pilaExtraer == 0 && pilaAgregar == 0) {
+			Node* temp;
+			if (formaExtraer == 0) {
+			}
+			else {
+				temp = milist1->ExtractAtEnd();
+				milist1->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 1);
+			}
+			return;
+		}
+		if (pilaExtraer == 0 && pilaAgregar == 1) {
+			Node* temp;
+			if (formaExtraer == 0) {
+				temp = milist1->ExtractAtStart();
+				milist2->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 2);
+			}
+			else {
+				temp = milist1->ExtractAtEnd();
+				milist2->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 2);
+			}
+			return;
+		}
+		if (pilaExtraer == 0 && pilaAgregar == 2) {
+			Node* temp;
+			if (formaExtraer == 0) {
+				temp = milist1->ExtractAtStart();
+				milist3->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 3);
+			}
+			else {
+				temp = milist1->ExtractAtEnd();
+				milist3->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 3);
+			}
+			return;
+		}
+		if (pilaExtraer == 0 && pilaAgregar == 2) {
+			Node* temp;
+			if (formaExtraer == 0) {
+				temp = milist1->ExtractAtStart();
+				milist3->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 3);
+			}
+			else {
+				temp = milist1->ExtractAtEnd();
+				milist3->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 3);
+			}
+			return;
+		}
+		if (pilaExtraer == 0 && pilaAgregar == 2) {
+			Node* temp;
+			if (formaExtraer == 0) {
+				temp = milist1->ExtractAtStart();
+				milist3->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 3);
+			}
+			else {
+				temp = milist1->ExtractAtEnd();
+				milist3->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 3);
+			}
+			return;
+		}
+		if (pilaExtraer == 0 && pilaAgregar == 2) {
+			Node* temp;
+			if (formaExtraer == 0) {
+				temp = milist1->ExtractAtStart();
+				milist3->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 3);
+			}
+			else {
+				temp = milist1->ExtractAtEnd();
+				milist3->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 3);
+			}
+			return;
+		}
+	}
+	if (milist2->count > 0) {
+
+		if (pilaExtraer == 1 && pilaAgregar == 0) {
+			Node* temp;
+			if (formaExtraer == 0) {
+				temp = milist2->ExtractAtStart();
+				milist1->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 1);
+			}
+			else {
+				temp = milist2->ExtractAtEnd();
+				milist1->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 1);
+			}
+			return;
+		}
+		if (pilaExtraer == 1 && pilaAgregar == 1) {
+			Node* temp;
+			if (formaExtraer == 0) {
+			}
+			else {
+				temp = milist2->ExtractAtEnd();
+				milist2->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 2);
+			}
+			return;
+		}
+		if (pilaExtraer == 1 && pilaAgregar == 2) {
+			Node* temp;
+			if (formaExtraer == 0) {
+				temp = milist2->ExtractAtStart();
+				milist3->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 3);
+			}
+			else {
+				temp = milist2->ExtractAtEnd();
+				milist3->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 3);
+			}
+			return;
+		}
+	}
+	if (milist3->count > 0) {
+
+		if (pilaExtraer == 2 && pilaAgregar == 0) {
+			Node* temp;
+			if (formaExtraer == 0) {
+				temp = milist3->ExtractAtStart();
+				milist1->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 1);
+			}
+			else {
+				temp = milist3->ExtractAtEnd();
+				milist1->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 1);
+			}
+			return;
+		}
+		if (pilaExtraer == 2 && pilaAgregar == 1) {
+			Node* temp;
+			if (formaExtraer == 0) {
+				temp = milist3->ExtractAtStart();
+				milist2->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 2);
+			}
+			else {
+				temp = milist3->ExtractAtEnd();
+				milist2->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 2);
+			}
+			return;
+		}
+		if (pilaExtraer == 2 && pilaAgregar == 2) {
+			Node* temp;
+			if (formaExtraer == 0) {
+			}
+			else {
+				temp = milist3->ExtractAtEnd();
+				milist3->InsertAtStart(temp->value);
+				Pintardatagrid(1, temp->value, 3);
+			}
+			return;
+		}
+	}
+}
+void solucionAutomatica(int tipoSolucion) {
+	if (milist1->count > 0) {
+		for (int i = 0; i = milist1->count; i++) {
+			Node* temp;
+			if (tipoSolucion == 0) {
+				temp = milist1->ExtractAtEnd();
+			}
+			else {
+				temp = milist1->ExtractAtStart();
+			}
+			validarColor(temp->value, "1");
+
+		}
+	}
+	if (milist2->count > 0) {
+		for (int i = 0; i = milist2->count; i++) {
+			Node* temp;
+			if (tipoSolucion == 0) {
+				temp = milist2->ExtractAtEnd();
+			}
+			else {
+				temp = milist2->ExtractAtStart();
+			}
+			validarColor(temp->value, "2");
+		}
+	}
+	if (milist3->count > 0) {
+		for (int i = 0; i = milist3->count; i++) {
+			Node* temp;
+			if (tipoSolucion == 0) {
+				temp = milist3->ExtractAtEnd();
+			}
+			else {
+				temp = milist3->ExtractAtStart();
+			}
+			validarColor(temp->value, "3");
+		}
+	}
+	if (milist4->count > 0) {
+		for (int i = 0; i = milist4->count; i++) {
+			Node* temp;
+			if (tipoSolucion == 0) {
+				temp = milist4->ExtractAtEnd();
+			}
+			else {
+				temp = milist4->ExtractAtStart();
+			}
+			validarColor(temp->value, "4");
+		}
+	}
+	if (milist5->count > 0) {
+		for (int i = 0; i = milist5->count; i++) {
+			Node* temp;
+			if (tipoSolucion == 0) {
+				temp = milist5->ExtractAtEnd();
+			}
+			else {
+				temp = milist5->ExtractAtStart();
+			}
+			validarColor(temp->value, "5");
+		}
+	}
+	if (milist6->count > 0) {
+		for (int i = 0; i = milist6->count; i++) {
+			Node* temp;
+			if (tipoSolucion == 0) {
+				temp = milist6->ExtractAtEnd();
+			}
+			else {
+				temp = milist6->ExtractAtStart();
+			}
+			validarColor(temp->value, "6");
+		}
+	}
+	if (milist7->count > 0) {
+		for (int i = 0; i = milist7->count; i++) {
+			Node* temp;
+			if (tipoSolucion == 0) {
+				temp = milist7->ExtractAtEnd();
+			}
+			else {
+				temp = milist7->ExtractAtStart();
+			}
+			validarColor(temp->value, "7");
+		}
+	}
+	if (milist8->count > 0) {
+		for (int i = 0; i = milist8->count; i++) {
+			Node* temp;
+			if (tipoSolucion == 0) {
+				temp = milist8->ExtractAtEnd();
+			}
+			else {
+				temp = milist8->ExtractAtStart();
+			}
+			validarColor(temp->value, "8");
+		}
+	}
+}
+
+void validarColor(int valor, String^ noPila) {
+
+	if (valor == 1) {
+		pilaAmarillo->InsertAtStart(valor);
+		reporte += "P-" + noPila + "-PY,";
+		Pintardatagrid(1, 1, 4);
+		return;
+
+	}
+	if (valor == 2) {
+		pilaVerde->InsertAtStart(valor);
+		reporte += "P-" + noPila + "-PG,";
+		Pintardatagrid(1, 2, 12);
+		return;
+	}
+	if (valor == 3) {
+		pilaMorado->InsertAtStart(valor);
+		reporte += "P-" + noPila + "-PP,";
+		Pintardatagrid(1, 3, 13);
+		return;
+	}
+	if (valor == 4) {
+		pilaRojo->InsertAtStart(valor);
+		reporte += "P-" + noPila + "-PR,";
+		Pintardatagrid(1, 4, 14);
+		return;
+	}
+	if (valor == 5) {
+		pilaNegra->InsertAtStart(valor);
+		reporte += "P-" + noPila + "-PB,";
+		Pintardatagrid(1, 5, 5);
+		return;
+	}
+	if (valor == 6) {
+		pilaAzul->InsertAtStart(valor);
+		reporte += "P-" + noPila + "-PZ,";
+		Pintardatagrid(1, 6, 15);
+		return;
+	}
+	if (valor == 7) {
+		pilaBlanco->InsertAtStart(valor);
+		reporte += "P-" + noPila + "-PW,";
+		Pintardatagrid(1, 7, 6);
+		return;
+	}
+	if (valor == 8) {
+		pilaAzulM->InsertAtStart(valor);
+		reporte += "P-" + noPila + "-PN,";
+		Pintardatagrid(1, 8, 16);
+		return;
+	}
+
+}
+
+private: void ReestablecerColor() {
+	dataGridView4->Rows->Clear();
+	dataGridView4->Columns->Clear();
+	dataGridView4->ColumnHeadersVisible = false;
+	dataGridView4->RowHeadersVisible = false;
+
+	dataGridView5->Rows->Clear();
+	dataGridView5->Columns->Clear();
+	dataGridView5->ColumnHeadersVisible = false;
+	dataGridView5->RowHeadersVisible = false;
+
+	dataGridView6->Rows->Clear();
+	dataGridView6->Columns->Clear();
+	dataGridView6->ColumnHeadersVisible = false;
+	dataGridView6->RowHeadersVisible = false;
+
+	dataGridView12->Rows->Clear();
+	dataGridView12->Columns->Clear();
+	dataGridView12->ColumnHeadersVisible = false;
+	dataGridView12->RowHeadersVisible = false;
+
+	dataGridView13->Rows->Clear();
+	dataGridView13->Columns->Clear();
+	dataGridView13->ColumnHeadersVisible = false;
+	dataGridView13->RowHeadersVisible = false;
+
+	dataGridView14->Rows->Clear();
+	dataGridView14->Columns->Clear();
+	dataGridView14->ColumnHeadersVisible = false;
+	dataGridView14->RowHeadersVisible = false;
+
+	dataGridView15->Rows->Clear();
+	dataGridView15->Columns->Clear();
+	dataGridView15->ColumnHeadersVisible = false;
+	dataGridView15->RowHeadersVisible = false;
+
+	dataGridView16->Rows->Clear();
+	dataGridView16->Columns->Clear();
+	dataGridView16->ColumnHeadersVisible = false;
+	dataGridView16->RowHeadersVisible = false;
+};
+
+private: void ReestablecerMatriz() {
+	dataGridView1->Rows->Clear();
+	dataGridView1->Columns->Clear();
+	dataGridView1->ColumnHeadersVisible = false;
+	dataGridView1->RowHeadersVisible = false;
+
+	dataGridView2->Rows->Clear();
+	dataGridView2->Columns->Clear();
+	dataGridView2->ColumnHeadersVisible = false;
+	dataGridView2->RowHeadersVisible = false;
+
+	dataGridView3->Rows->Clear();
+	dataGridView3->Columns->Clear();
+	dataGridView3->ColumnHeadersVisible = false;
+	dataGridView3->RowHeadersVisible = false;
+
+	dataGridView7->Rows->Clear();
+	dataGridView7->Columns->Clear();
+	dataGridView7->ColumnHeadersVisible = false;
+	dataGridView7->RowHeadersVisible = false;
+
+	dataGridView8->Rows->Clear();
+	dataGridView8->Columns->Clear();
+	dataGridView8->ColumnHeadersVisible = false;
+	dataGridView8->RowHeadersVisible = false;
+
+	dataGridView9->Rows->Clear();
+	dataGridView9->Columns->Clear();
+	dataGridView9->ColumnHeadersVisible = false;
+	dataGridView9->RowHeadersVisible = false;
+
+	dataGridView10->Rows->Clear();
+	dataGridView10->Columns->Clear();
+	dataGridView10->ColumnHeadersVisible = false;
+	dataGridView10->RowHeadersVisible = false;
+
+	dataGridView11->Rows->Clear();
+	dataGridView11->Columns->Clear();
+	dataGridView11->ColumnHeadersVisible = false;
+	dataGridView11->RowHeadersVisible = false;
+};
+	   /* Método para recorrer pilas y llenar pilas de colores
+		@param tipoSolucion corresponde a la solucion a relizar (0 = pila, 1 = cola)
+		return void
+		*/
+void Pintardatagrid(int pColumnas, int pColor, int pNoGrid) {
+	int numFilas = 0;
+	int numColumnas = pColumnas;
+
+		   //Se crean las columnas de la matriz
+
+		   if (numColumnas > 0) {
+			   for (int i = 0; i < numColumnas; i++) {
+				   //Se crea una columna
+				   DataGridViewColumn^ nuevacolumna = gcnew DataGridViewColumn();
+				   nuevacolumna->Width = 20;
+
+				   if (pColor == 1) {
+					   nuevacolumna->DefaultCellStyle->BackColor = Color::Yellow;
+				   }
+				   else if (pColor == 2) {
+					   nuevacolumna->DefaultCellStyle->BackColor = Color::GreenYellow;
+				   }
+				   else if (pColor == 3) {
+					   nuevacolumna->DefaultCellStyle->BackColor = Color::MediumPurple;
+				   }
+				   else if (pColor == 4) {
+					   nuevacolumna->DefaultCellStyle->BackColor = Color::OrangeRed;
+				   }
+				   else if (pColor == 5) {
+					   nuevacolumna->DefaultCellStyle->BackColor = Color::Black;
+				   }
+				   else if (pColor == 6) {
+					   nuevacolumna->DefaultCellStyle->BackColor = Color::SkyBlue;
+				   }
+				   else if (pColor == 7) {
+					   nuevacolumna->DefaultCellStyle->BackColor = Color::White;
+				   }
+				   else if (pColor == 8) {
+					   nuevacolumna->DefaultCellStyle->BackColor = Color::DarkBlue;
+				   }
+				   //Se le agrega el tipo de columna que será
+				   DataGridViewCell^ cellTemplate = gcnew DataGridViewTextBoxCell();
+				   nuevacolumna->CellTemplate = cellTemplate;
+
+				   //Se agrega la columna al Datagrid
+				   if (pNoGrid == 1) {
+					   dataGridView1->Columns->Add(nuevacolumna);
+				   }
+				   else if (pNoGrid == 2) {
+					   dataGridView2->Columns->Add(nuevacolumna);
+				   }
+				   else if (pNoGrid == 3) {
+					   dataGridView3->Columns->Add(nuevacolumna);
+				   }
+				   else if (pNoGrid == 4) {
+					   dataGridView4->Columns->Add(nuevacolumna);
+				   }
+				   else if (pNoGrid == 5) {
+					   dataGridView5->Columns->Add(nuevacolumna);
+				   }
+				   else if (pNoGrid == 6) {
+					   dataGridView6->Columns->Add(nuevacolumna);
+				   }
+				   else if (pNoGrid == 7) {
+					   dataGridView7->Columns->Add(nuevacolumna);
+				   }
+				   else if (pNoGrid == 8) {
+					   dataGridView8->Columns->Add(nuevacolumna);
+				   }
+				   else if (pNoGrid == 9) {
+					   dataGridView9->Columns->Add(nuevacolumna);
+				   }
+				   else if (pNoGrid == 10) {
+					   dataGridView10->Columns->Add(nuevacolumna);
+				   }
+				   else if (pNoGrid == 11) {
+					   dataGridView11->Columns->Add(nuevacolumna);
+				   }
+				   else if (pNoGrid == 12) {
+					   dataGridView12->Columns->Add(nuevacolumna);
+				   }
+				   else if (pNoGrid == 13) {
+					   dataGridView13->Columns->Add(nuevacolumna);
+				   }
+				   else if (pNoGrid == 14) {
+					   dataGridView14->Columns->Add(nuevacolumna);
+				   }
+				   else if (pNoGrid == 15) {
+					   dataGridView15->Columns->Add(nuevacolumna);
+				   }
+				   else if (pNoGrid == 16) {
+					   dataGridView16->Columns->Add(nuevacolumna);
+				   }
+			   }
+		   }
+
+		   //Se agregan las filas a la matriz
+		   if (numFilas > 0) {
+			   for (int i = 0; i < numFilas; i++) {
+				   dataGridView1->Rows->Add();
+			   }
+		   }
 }
 };
 }
