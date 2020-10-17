@@ -1,6 +1,6 @@
+#pragma once
 #include "List.h";
 #include <cstddef>
-#pragma once
 
 namespace Proyecto1MeganMorales122112001 {
 
@@ -12,22 +12,18 @@ namespace Proyecto1MeganMorales122112001 {
 	using namespace System::Drawing;
 	using namespace System::IO;
 
-	/// <summary>
-	/// Resumen de MyForm1
-	/// </summary>
+
 	public ref class MyForm1 : public System::Windows::Forms::Form
 	{
 	public: List* miList;
 
 	private: System::Windows::Forms::Button^ readDoc;
-
 		   /*Pilas para mapa inicial*/
 	public: List* milist1;
 	public: List* milist2;
 	public: List* milist3;
 	public: List* milist4;
 	public: List* milist5;
-
 
 		  /*Pilas para manejo de colores*/
 	public: List* pilaNegra;
@@ -40,9 +36,8 @@ namespace Proyecto1MeganMorales122112001 {
 	public: List* pilaAzulM;
 
 		  /*Para almacenar el historial de movimientos*/
+		  
 	public: String^ reporte;
-
-
 
 
 	public:
@@ -170,6 +165,8 @@ private: System::Windows::Forms::ListBox^ lstLista;
 	private: System::Windows::Forms::Label^ label14;
 	private: System::Windows::Forms::Button^ button7;
 	private: System::Windows::Forms::Button^ button8;
+	private: System::Windows::Forms::SaveFileDialog^ sfdExportar;
+
 	protected:
 
 	private:
@@ -229,12 +226,11 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			// btnIniciar
 			// 
 			this->btnIniciar->BackColor = System::Drawing::Color::White;
-			this->btnIniciar->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->btnIniciar->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnIniciar->Location = System::Drawing::Point(37, 138);
-			this->btnIniciar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnIniciar->Location = System::Drawing::Point(380, 11);
 			this->btnIniciar->Name = L"btnIniciar";
-			this->btnIniciar->Size = System::Drawing::Size(141, 48);
+			this->btnIniciar->Size = System::Drawing::Size(88, 30);
 			this->btnIniciar->TabIndex = 0;
 			this->btnIniciar->Text = L"Cargar juego";
 			this->btnIniciar->UseVisualStyleBackColor = false;
@@ -246,34 +242,34 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label1->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(287, 43);
+			this->label1->Location = System::Drawing::Point(9, 13);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(424, 32);
+			this->label1->Size = System::Drawing::Size(336, 26);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"¡BIENVENIDO A COLORMANÍA!";
 			// 
 			// btnSManual
 			// 
 			this->btnSManual->BackColor = System::Drawing::Color::White;
-			this->btnSManual->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->btnSManual->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnSManual->Location = System::Drawing::Point(223, 138);
-			this->btnSManual->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnSManual->Location = System::Drawing::Point(505, 119);
 			this->btnSManual->Name = L"btnSManual";
-			this->btnSManual->Size = System::Drawing::Size(176, 48);
+			this->btnSManual->Size = System::Drawing::Size(87, 39);
 			this->btnSManual->TabIndex = 2;
 			this->btnSManual->Text = L"Solución manual";
 			this->btnSManual->UseVisualStyleBackColor = false;
+			this->btnSManual->Click += gcnew System::EventHandler(this, &MyForm1::btnSManual_Click);
 			// 
 			// btnSpila
 			// 
 			this->btnSpila->BackColor = System::Drawing::Color::White;
-			this->btnSpila->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->btnSpila->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnSpila->Location = System::Drawing::Point(707, 124);
-			this->btnSpila->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnSpila->Location = System::Drawing::Point(488, 423);
 			this->btnSpila->Name = L"btnSpila";
-			this->btnSpila->Size = System::Drawing::Size(215, 69);
+			this->btnSpila->Size = System::Drawing::Size(116, 50);
 			this->btnSpila->TabIndex = 3;
 			this->btnSpila->Text = L"Solución automática por pila";
 			this->btnSpila->UseVisualStyleBackColor = false;
@@ -282,12 +278,11 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			// btnScola
 			// 
 			this->btnScola->BackColor = System::Drawing::Color::White;
-			this->btnScola->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->btnScola->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnScola->Location = System::Drawing::Point(441, 128);
-			this->btnScola->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnScola->Location = System::Drawing::Point(488, 369);
 			this->btnScola->Name = L"btnScola";
-			this->btnScola->Size = System::Drawing::Size(215, 62);
+			this->btnScola->Size = System::Drawing::Size(116, 50);
 			this->btnScola->TabIndex = 4;
 			this->btnScola->Text = L"Solución automática por cola";
 			this->btnScola->UseVisualStyleBackColor = false;
@@ -297,33 +292,30 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			// 
 			this->dataGridView1->BackgroundColor = System::Drawing::Color::LightSteelBlue;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(51, 486);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->dataGridView1->Location = System::Drawing::Point(38, 177);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
-			this->dataGridView1->Size = System::Drawing::Size(215, 31);
+			this->dataGridView1->Size = System::Drawing::Size(256, 25);
 			this->dataGridView1->TabIndex = 5;
 			// 
 			// dataGridView2
 			// 
 			this->dataGridView2->BackgroundColor = System::Drawing::Color::LightSteelBlue;
 			this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView2->Location = System::Drawing::Point(51, 518);
-			this->dataGridView2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->dataGridView2->Location = System::Drawing::Point(38, 201);
 			this->dataGridView2->Name = L"dataGridView2";
 			this->dataGridView2->RowHeadersWidth = 51;
-			this->dataGridView2->Size = System::Drawing::Size(215, 28);
+			this->dataGridView2->Size = System::Drawing::Size(256, 23);
 			this->dataGridView2->TabIndex = 6;
 			// 
 			// dataGridView3
 			// 
 			this->dataGridView3->BackgroundColor = System::Drawing::Color::LightSteelBlue;
 			this->dataGridView3->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView3->Location = System::Drawing::Point(51, 546);
-			this->dataGridView3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->dataGridView3->Location = System::Drawing::Point(38, 222);
 			this->dataGridView3->Name = L"dataGridView3";
 			this->dataGridView3->RowHeadersWidth = 51;
-			this->dataGridView3->Size = System::Drawing::Size(215, 23);
+			this->dataGridView3->Size = System::Drawing::Size(256, 19);
 			this->dataGridView3->TabIndex = 7;
 			// 
 			// label2
@@ -332,9 +324,10 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label2->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(156, 273);
+			this->label2->Location = System::Drawing::Point(113, 140);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(118, 20);
+			this->label2->Size = System::Drawing::Size(93, 16);
 			this->label2->TabIndex = 8;
 			this->label2->Text = L"MAPA INICIAL";
 			// 
@@ -342,33 +335,30 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			// 
 			this->dataGridView4->BackgroundColor = System::Drawing::Color::LightSteelBlue;
 			this->dataGridView4->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView4->Location = System::Drawing::Point(651, 475);
-			this->dataGridView4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->dataGridView4->Location = System::Drawing::Point(38, 381);
 			this->dataGridView4->Name = L"dataGridView4";
 			this->dataGridView4->RowHeadersWidth = 51;
-			this->dataGridView4->Size = System::Drawing::Size(252, 42);
+			this->dataGridView4->Size = System::Drawing::Size(256, 25);
 			this->dataGridView4->TabIndex = 9;
 			// 
 			// dataGridView5
 			// 
 			this->dataGridView5->BackgroundColor = System::Drawing::Color::LightSteelBlue;
 			this->dataGridView5->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView5->Location = System::Drawing::Point(651, 510);
-			this->dataGridView5->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->dataGridView5->Location = System::Drawing::Point(38, 405);
 			this->dataGridView5->Name = L"dataGridView5";
 			this->dataGridView5->RowHeadersWidth = 51;
-			this->dataGridView5->Size = System::Drawing::Size(252, 34);
+			this->dataGridView5->Size = System::Drawing::Size(256, 23);
 			this->dataGridView5->TabIndex = 10;
 			// 
 			// dataGridView6
 			// 
 			this->dataGridView6->BackgroundColor = System::Drawing::Color::LightSteelBlue;
 			this->dataGridView6->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView6->Location = System::Drawing::Point(651, 542);
-			this->dataGridView6->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->dataGridView6->Location = System::Drawing::Point(38, 427);
 			this->dataGridView6->Name = L"dataGridView6";
 			this->dataGridView6->RowHeadersWidth = 51;
-			this->dataGridView6->Size = System::Drawing::Size(252, 37);
+			this->dataGridView6->Size = System::Drawing::Size(256, 19);
 			this->dataGridView6->TabIndex = 11;
 			// 
 			// label3
@@ -377,9 +367,10 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label3->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(15, 475);
+			this->label3->Location = System::Drawing::Point(8, 186);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(29, 20);
+			this->label3->Size = System::Drawing::Size(24, 16);
 			this->label3->TabIndex = 12;
 			this->label3->Text = L"P0";
 			// 
@@ -389,9 +380,10 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label4->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(15, 518);
+			this->label4->Location = System::Drawing::Point(8, 202);
+			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(29, 20);
+			this->label4->Size = System::Drawing::Size(24, 16);
 			this->label4->TabIndex = 13;
 			this->label4->Text = L"P1";
 			// 
@@ -401,9 +393,10 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label5->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(15, 559);
+			this->label5->Location = System::Drawing::Point(8, 218);
+			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(29, 20);
+			this->label5->Size = System::Drawing::Size(24, 16);
 			this->label5->TabIndex = 14;
 			this->label5->Text = L"P2";
 			// 
@@ -413,9 +406,10 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label6->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(612, 486);
+			this->label6->Location = System::Drawing::Point(9, 387);
+			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(29, 20);
+			this->label6->Size = System::Drawing::Size(24, 16);
 			this->label6->TabIndex = 15;
 			this->label6->Text = L"P0";
 			// 
@@ -425,9 +419,10 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label7->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(612, 518);
+			this->label7->Location = System::Drawing::Point(9, 403);
+			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(29, 20);
+			this->label7->Size = System::Drawing::Size(24, 16);
 			this->label7->TabIndex = 16;
 			this->label7->Text = L"P1";
 			// 
@@ -437,9 +432,10 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label8->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label8->Location = System::Drawing::Point(612, 559);
+			this->label8->Location = System::Drawing::Point(9, 419);
+			this->label8->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(29, 20);
+			this->label8->Size = System::Drawing::Size(24, 16);
 			this->label8->TabIndex = 17;
 			this->label8->Text = L"P2";
 			// 
@@ -449,35 +445,34 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label9->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label9->Location = System::Drawing::Point(633, 359);
+			this->label9->Location = System::Drawing::Point(122, 349);
+			this->label9->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(108, 20);
+			this->label9->Size = System::Drawing::Size(86, 16);
 			this->label9->TabIndex = 18;
 			this->label9->Text = L"MAPA FINAL";
 			// 
 			// lstLista
 			// 
 			this->lstLista->FormattingEnabled = true;
-			this->lstLista->ItemHeight = 16;
-			this->lstLista->Location = System::Drawing::Point(992, 287);
-			this->lstLista->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->lstLista->Location = System::Drawing::Point(737, 157);
 			this->lstLista->Name = L"lstLista";
-			this->lstLista->Size = System::Drawing::Size(169, 388);
+			this->lstLista->Size = System::Drawing::Size(128, 316);
 			this->lstLista->TabIndex = 19;
 			this->lstLista->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm1::listBox1_SelectedIndexChanged);
 			// 
 			// button2
 			// 
 			this->button2->BackColor = System::Drawing::Color::White;
-			this->button2->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button2->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(992, 683);
-			this->button2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button2->Location = System::Drawing::Point(763, 479);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(176, 48);
+			this->button2->Size = System::Drawing::Size(87, 39);
 			this->button2->TabIndex = 20;
 			this->button2->Text = L"Guardar reporte";
 			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm1::button2_Click);
 			// 
 			// label10
 			// 
@@ -485,52 +480,51 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label10->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label10->Location = System::Drawing::Point(1028, 249);
+			this->label10->Location = System::Drawing::Point(760, 129);
+			this->label10->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(89, 20);
+			this->label10->Size = System::Drawing::Size(74, 16);
 			this->label10->TabIndex = 21;
 			this->label10->Text = L"REPORTE";
 			// 
 			// button5
 			// 
 			this->button5->BackColor = System::Drawing::Color::White;
-			this->button5->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button5->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button5->Location = System::Drawing::Point(381, 436);
-			this->button5->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button5->Location = System::Drawing::Point(602, 174);
 			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(100, 31);
+			this->button5->Size = System::Drawing::Size(46, 25);
 			this->button5->TabIndex = 22;
 			this->button5->Text = L"Pila";
 			this->button5->UseVisualStyleBackColor = false;
+			this->button5->Click += gcnew System::EventHandler(this, &MyForm1::button5_Click);
 			// 
 			// button6
 			// 
 			this->button6->BackColor = System::Drawing::Color::White;
-			this->button6->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button6->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button6->Location = System::Drawing::Point(381, 486);
-			this->button6->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button6->Location = System::Drawing::Point(602, 200);
 			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(100, 31);
+			this->button6->Size = System::Drawing::Size(46, 25);
 			this->button6->TabIndex = 23;
 			this->button6->Text = L"Cola";
 			this->button6->UseVisualStyleBackColor = false;
+			this->button6->Click += gcnew System::EventHandler(this, &MyForm1::button6_Click);
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(373, 599);
-			this->textBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->textBox1->Location = System::Drawing::Point(427, 204);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(24, 22);
+			this->textBox1->Size = System::Drawing::Size(19, 20);
 			this->textBox1->TabIndex = 24;
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(488, 598);
-			this->textBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->textBox2->Location = System::Drawing::Point(538, 205);
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(24, 22);
+			this->textBox2->Size = System::Drawing::Size(19, 20);
 			this->textBox2->TabIndex = 25;
 			// 
 			// label11
@@ -539,9 +533,10 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label11->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label11->Location = System::Drawing::Point(377, 559);
+			this->label11->Location = System::Drawing::Point(444, 177);
+			this->label11->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(94, 20);
+			this->label11->Size = System::Drawing::Size(73, 16);
 			this->label11->TabIndex = 26;
 			this->label11->Text = L"Ej. P0 A P2";
 			// 
@@ -551,9 +546,10 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label12->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label12->Location = System::Drawing::Point(335, 599);
+			this->label12->Location = System::Drawing::Point(405, 205);
+			this->label12->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(20, 20);
+			this->label12->Size = System::Drawing::Size(17, 16);
 			this->label12->TabIndex = 27;
 			this->label12->Text = L"P";
 			// 
@@ -563,9 +559,10 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label13->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label13->Location = System::Drawing::Point(405, 601);
+			this->label13->Location = System::Drawing::Point(472, 206);
+			this->label13->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(20, 20);
+			this->label13->Size = System::Drawing::Size(17, 16);
 			this->label13->TabIndex = 28;
 			this->label13->Text = L"A";
 			// 
@@ -575,21 +572,21 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->label14->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label14->Location = System::Drawing::Point(459, 599);
+			this->label14->Location = System::Drawing::Point(516, 205);
+			this->label14->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(20, 20);
+			this->label14->Size = System::Drawing::Size(17, 16);
 			this->label14->TabIndex = 29;
 			this->label14->Text = L"P";
 			// 
 			// button7
 			// 
-			this->button7->BackColor = System::Drawing::Color::Red;
-			this->button7->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button7->BackColor = System::Drawing::Color::MistyRose;
+			this->button7->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button7->Location = System::Drawing::Point(1108, 38);
-			this->button7->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button7->Location = System::Drawing::Point(756, 3);
 			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(141, 48);
+			this->button7->Size = System::Drawing::Size(78, 39);
 			this->button7->TabIndex = 30;
 			this->button7->Text = L"REGRESAR";
 			this->button7->UseVisualStyleBackColor = false;
@@ -597,13 +594,12 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			// 
 			// button8
 			// 
-			this->button8->BackColor = System::Drawing::Color::Red;
-			this->button8->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button8->BackColor = System::Drawing::Color::MistyRose;
+			this->button8->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button8->Location = System::Drawing::Point(1108, 94);
-			this->button8->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button8->Location = System::Drawing::Point(756, 47);
 			this->button8->Name = L"button8";
-			this->button8->Size = System::Drawing::Size(141, 48);
+			this->button8->Size = System::Drawing::Size(78, 39);
 			this->button8->TabIndex = 31;
 			this->button8->Text = L"SALIR";
 			this->button8->UseVisualStyleBackColor = false;
@@ -611,10 +607,10 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			// 
 			// MyForm1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(1251, 786);
+			this->ClientSize = System::Drawing::Size(881, 552);
 			this->Controls->Add(this->button8);
 			this->Controls->Add(this->button7);
 			this->Controls->Add(this->label14);
@@ -647,7 +643,7 @@ private: System::Windows::Forms::ListBox^ lstLista;
 			this->Controls->Add(this->btnSManual);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->btnIniciar);
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"MyForm1";
 			this->Text = L"MyForm1";
 			this->Load += gcnew System::EventHandler(this, &MyForm1::MyForm1_Load);
@@ -663,22 +659,27 @@ private: System::Windows::Forms::ListBox^ lstLista;
 		}
 #pragma endregion
 	private: System::Void MyForm1_Load(System::Object^ sender, System::EventArgs^ e) {
+		btnSManual->Enabled=false;
+		btnScola->Enabled = false;
+		btnSpila->Enabled = false;
+		button2->Enabled = false;
+		button5->Enabled = false;
+		button6->Enabled = false;
 	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		btnSManual->Enabled = false;
+		btnScola->Enabled = false;
+		button2->Enabled = true;
+		button5->Enabled = false;
+		button6->Enabled = false;
 		solucionAutomatica(0); // 0 significa que soluciona por pila y 1 por cola
 		LlenarListBox();
 
-		Console::WriteLine("tamaño pilaAmarillo: " + pilaAmarillo->count);
-		Console::WriteLine("tamaño pilaVerde: " + pilaVerde->count);
-		Console::WriteLine("tamaño pilaRojo: " + pilaRojo->count);
-		Console::WriteLine("tamaño pilaMorado: " + pilaMorado->count);
-		Console::WriteLine("tamaño pilaNegro: " + pilaNegra->count);
-		Console::WriteLine("tamaño pilaBlanco: " + pilaBlanco->count);
-		Console::WriteLine("tamaño pilaAzul Marino: " + pilaAzulM->count);
-		Console::WriteLine("tamaño pilaAzul: " + pilaAzul->count);
 	}
 private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }
+	   
+	   
 	   /* Método mostrar pasos en ListBox
 		return void
 		*/
@@ -723,9 +724,6 @@ void solucionAutomatica(int tipoSolucion) {
 		else {
 				temp = milist2->ExtractAtStart();
 		}
-
-				   // Console::WriteLine("tamaño pila2: " + milist2->count);
-				   // Console::WriteLine("data extraido: " + temp->value);
 		validarColor(temp->value, "2");
 
 		}
@@ -740,10 +738,23 @@ void solucionAutomatica(int tipoSolucion) {
 			else {
 			temp = milist3->ExtractAtStart();
 			}
-
 				   // Console::WriteLine("tamaño pila3: " + milist3->count);
 				   // Console::WriteLine("data extraido: " + temp->value);
 			validarColor(temp->value, "3");
+		}
+	}
+	if (milist4->count > 0) {
+		for (int i = 0; i = milist4->count; i++) {
+			Node* temp;
+			if (tipoSolucion == 0) {
+				temp = milist4->ExtractAtEnd();
+			}
+			else {
+				temp = milist4->ExtractAtStart();
+			}
+			// Console::WriteLine("tamaño pila3: " + milist3->count);
+			// Console::WriteLine("data extraido: " + temp->value);
+			validarColor(temp->value, "4");
 		}
 	}
 }
@@ -845,6 +856,7 @@ void Pintardatagrid(int pColumnas, int pColor, int pNoGrid){
 				//Se crea una columna
 				DataGridViewColumn^ nuevacolumna = gcnew DataGridViewColumn();
 				nuevacolumna->Width = 20;
+				
 				if (pColor == 1) {
 					nuevacolumna->DefaultCellStyle->BackColor = Color::Yellow;
 				}
@@ -868,6 +880,9 @@ void Pintardatagrid(int pColumnas, int pColor, int pNoGrid){
 				}
 				else if (pColor == 8) {
 					nuevacolumna->DefaultCellStyle->BackColor = Color::DarkBlue;
+				}
+				else if (pColor == 9) {
+					nuevacolumna->DefaultCellStyle->BackColor = Color::Empty;
 				}
 
 				//Se le agrega el tipo de columna que será
@@ -907,20 +922,29 @@ void Pintardatagrid(int pColumnas, int pColor, int pNoGrid){
 
 
 private: System::Void btnScola_Click(System::Object^ sender, System::EventArgs^ e) {
+	btnSManual->Enabled = false;
+	btnSpila->Enabled = false;
+	button2->Enabled = true;
+	button5->Enabled = false;
+	button6->Enabled = false;
 	solucionAutomatica(1); // 0 significa que soluciona por pila y 1 por cola
 	LlenarListBox();
 
-	Console::WriteLine("tamaño pilaAmarillo: " + pilaAmarillo->count);
-	Console::WriteLine("tamaño pilaVerde: " + pilaVerde->count);
+	/*Console::WriteLine("tamaño pilaAmarillo: " + pilaAmarillo->count);*/
+	/*Console::WriteLine("tamaño pilaVerde: " + pilaVerde->count);
 	Console::WriteLine("tamaño pilaRojo: " + pilaRojo->count);
 	Console::WriteLine("tamaño pilaMorado: " + pilaMorado->count);
 	Console::WriteLine("tamaño pilaNegro: " + pilaNegra->count);
 	Console::WriteLine("tamaño pilaBlanco: " + pilaBlanco->count);
 	Console::WriteLine("tamaño pilaAzul Marino: " + pilaAzulM->count);
-	Console::WriteLine("tamaño pilaAzul: " + pilaAzul->count);
+	Console::WriteLine("tamaño pilaAzul: " + pilaAzul->count);*/
 
 }
 private: System::Void btnIniciar_Click(System::Object^ sender, System::EventArgs^ e) {
+	btnSManual->Enabled = true;
+	btnScola->Enabled = true;
+	btnSpila->Enabled = true;
+	
 	Stream^ myStream;
 	OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog;
 
@@ -973,12 +997,10 @@ private: System::Void btnIniciar_Click(System::Object^ sender, System::EventArgs
 					milist1->InsertAtStart(value);
 					Pintardatagrid(1, value, 1);
 				}
-
 				else if (pila2) {
 					milist2->InsertAtStart(value);
 					Pintardatagrid(1, value, 2);
 				}
-
 				else if (pila3) {
 					milist3->InsertAtStart(value);
 					Pintardatagrid(1, value, 3);
@@ -991,8 +1013,6 @@ private: System::Void btnIniciar_Click(System::Object^ sender, System::EventArgs
 					milist5->InsertAtStart(value);
 
 				}*/
-
-				// LlenarListBox();
 
 				Console::WriteLine(temp);
 				if (temp == "X") {
@@ -1034,19 +1054,225 @@ private: System::Void btnIniciar_Click(System::Object^ sender, System::EventArgs
 	}
 }
 private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-	/*this->Close();*/
-
-
+		this->Close();
 }
 private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+}
+
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	/*sfdExportar->Filter = "Archivos separados por coma (csv) | *.csv";
+	File::WriteAllText(reporte);*/
+}
+private: System::Void btnSManual_Click(System::Object^ sender, System::EventArgs^ e) {
+	button2->Enabled = true;
+	button5->Enabled = true;
+	button6->Enabled = true;
+	btnScola->Enabled = false;
+	btnSpila->Enabled = false;
+	dataGridView4->Hide();
+	dataGridView5->Hide();
+	dataGridView6->Hide();
+	label6->Hide();
+	label7->Hide();
+	label8->Hide();
+	label9->Hide();
+	btnScola->Hide();
+	btnSpila->Hide();
+}
+	   /*void desordenar() {
+
+}*/
+	void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 		
-	/*MyForm ^ MyF = gcnew MyForm();
+		if (milist1->count > 0) {
+			
+			if (pilaExtraer == 0 && pilaAgregar == 0) {
+				Node* temp;
+				if (formaExtraer == 0) {
+					/*temp = milist1->ExtractAtEnd();
+					Pintardatagrid(1,temp->value, 1);
+					milist1->InsertAtEnd(temp->value);
+					Pintardatagrid(1, temp->value, 1);*/
+				}
+				else {
+					
+					temp= milist1->ExtractAtEnd();
+					dataGridView1->Columns->Clear();
+						
+					milist1->InsertAtStart(temp->value);
+					dataGridView1->Columns->Clear();
+					Pintardatagrid(1, temp->value, 1);
+				}
+				return;
+			}
+			if (pilaExtraer == 0 && pilaAgregar == 1) {
+				Node* temp;
+				if (formaExtraer == 0) {
+					temp = milist1->ExtractAtStart();
+					milist2->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 2);
+				}
+				else {
+					temp = milist1->ExtractAtEnd();
+					/*Pintardatagrid(1, temp->value, 1);*/
+					milist2->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 2);
+				}
+				return;
+			}
+			if (pilaExtraer == 0 && pilaAgregar == 2) {
+				Node* temp;
+				if (formaExtraer == 0) {
+					temp = milist1->ExtractAtStart();
+					milist3->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 3);
+				}
+				else {
+					temp = milist1->ExtractAtEnd();
+					milist3->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 3);
+				}
+				return;
+			}
 
-		this->Hide();
-		MyF->Show();*/
+		}
+		if (milist2->count > 0) {
 
+			if (pilaExtraer == 1 && pilaAgregar == 0) {
+				Node* temp;
+				if (formaExtraer == 0) {
+					temp = milist2->ExtractAtStart();
+					milist1->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 1);
+				}
+				else {
+					temp = milist2->ExtractAtEnd();
+					milist1->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 1);
+				}
+				return;
+			}
+			if (pilaExtraer == 1 && pilaAgregar == 1) {
+				Node* temp;
+				if (formaExtraer == 0) {
+					/*temp = milist2->ExtractAtEnd();
+					milist2->InsertAtEnd(temp->value);*/
+				}
+				else {
+					temp = milist2->ExtractAtEnd();
+					milist2->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 2);
+				}
+				return;
+			}
+			if (pilaExtraer == 1 && pilaAgregar == 2) {
+				Node* temp;
+				if (formaExtraer == 0) {
+					temp = milist2->ExtractAtStart();
+					milist3->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 3);
+				}
+				else {
+					temp = milist2->ExtractAtEnd();
+					milist3->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 3);
+				}
+				return;
+			}
 
+		}
+		if (milist3->count > 0) {
+
+			if (pilaExtraer == 2 && pilaAgregar == 0) {
+				Node* temp;
+				if (formaExtraer == 0) {
+					temp = milist3->ExtractAtStart();
+					milist1->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 1);
+				}
+				else {
+					temp = milist3->ExtractAtEnd();
+					milist1->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 1);
+				}
+				return;
+			}
+			if (pilaExtraer == 2 && pilaAgregar == 1) {
+				Node* temp;
+				if (formaExtraer == 0) {
+					temp = milist3->ExtractAtStart();
+					milist2->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value,2);
+				}
+				else {
+					temp = milist3->ExtractAtEnd();
+					milist2->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 2);
+				}
+				return;
+			}
+			if (pilaExtraer == 2 && pilaAgregar == 2) {
+				Node* temp;
+				if (formaExtraer == 0) {
+					/*temp = milist3->ExtractAtEnd();
+					milist3->InsertAtEnd(temp->value);*/
+				}
+				else {
+					temp = milist3->ExtractAtEnd();
+					milist3->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 3);
+				}
+				return;
+			}
+
+		}
+		
+}
+private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
+		int p0 = 0;
+		int p1 = 0;
+	
+	try {
+		 p0 = Convert::ToInt32(textBox1->Text);
+		 p1 = Convert::ToInt32(textBox2->Text);
+		 
+		 if (p0 == 0) {
+			 solucionManual(p0, p1, 1);
+		 }
+		 else if (p0 == 1) {
+			 solucionManual(p0, p1, 1);
+		 }
+		 else if (p0 == 2) {
+			 solucionManual(p0, p1, 1);
+		 }
+	}
+	catch (Exception^ e) {
+		MessageBox::Show("Error detectado: " + e->Message, "Valores incorrectos", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+
+}
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	int p0 = 0;
+	int p1 = 0;
+
+	try {
+		p0 = Convert::ToInt32(textBox1->Text);
+		p1 = Convert::ToInt32(textBox2->Text);
+
+		if (p0 == 0) {
+			solucionManual(p0, p1, 0);
+		}
+		else if (p0 == 1) {
+			solucionManual(p0, p1, 0);
+		}
+		else if (p0 == 2) {
+			solucionManual(p0, p1, 0);
+		}
+	}
+	catch (Exception^ e) {
+		MessageBox::Show("Error detectado: " + e->Message, "Valores incorrectos", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
 }
 };
 }

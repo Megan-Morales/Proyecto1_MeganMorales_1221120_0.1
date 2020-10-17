@@ -1,5 +1,6 @@
 #pragma once
 #include "MyForm1.h"
+#include "Instrucciones.h"
 
 
 namespace Proyecto1MeganMorales122112001 {
@@ -15,22 +16,10 @@ namespace Proyecto1MeganMorales122112001 {
 	
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
-	
-
-
-
-
-
-
-
-
 	public:
 		MyForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: agregar código de constructor aquí
-			//
 		}
 
 	protected:
@@ -61,7 +50,7 @@ namespace Proyecto1MeganMorales122112001 {
 	private: System::Windows::Forms::Button^ btMoMedio;
 
 
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
+
 
 
 
@@ -90,20 +79,17 @@ namespace Proyecto1MeganMorales122112001 {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->btMoDificl = (gcnew System::Windows::Forms::Button());
 			this->btMoMedio = (gcnew System::Windows::Forms::Button());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
 			this->label1->BackColor = System::Drawing::SystemColors::HighlightText;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(266, 19);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(121, 28);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(336, 26);
+			this->label1->Size = System::Drawing::Size(358, 29);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"¡BIENVENIDO A COLORMANÍA!";
 			// 
@@ -113,10 +99,9 @@ namespace Proyecto1MeganMorales122112001 {
 			this->label2->BackColor = System::Drawing::Color::White;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(637, 94);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(15, 124);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(243, 17);
+			this->label2->Size = System::Drawing::Size(284, 20);
 			this->label2->TabIndex = 2;
 			this->label2->Text = L"1. Para iniciar el juego, presione aquí";
 			// 
@@ -124,10 +109,10 @@ namespace Proyecto1MeganMorales122112001 {
 			// 
 			this->btMoFácil->BackColor = System::Drawing::Color::White;
 			this->btMoFácil->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->btMoFácil->Location = System::Drawing::Point(690, 145);
-			this->btMoFácil->Margin = System::Windows::Forms::Padding(2);
+			this->btMoFácil->Location = System::Drawing::Point(445, 110);
+			this->btMoFácil->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btMoFácil->Name = L"btMoFácil";
-			this->btMoFácil->Size = System::Drawing::Size(110, 29);
+			this->btMoFácil->Size = System::Drawing::Size(147, 36);
 			this->btMoFácil->TabIndex = 3;
 			this->btMoFácil->Text = L"MODO FÁCIL";
 			this->btMoFácil->UseVisualStyleBackColor = false;
@@ -139,10 +124,9 @@ namespace Proyecto1MeganMorales122112001 {
 			this->label3->BackColor = System::Drawing::Color::White;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(624, 367);
-			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label3->Location = System::Drawing::Point(15, 281);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(281, 17);
+			this->label3->Size = System::Drawing::Size(331, 20);
 			this->label3->TabIndex = 6;
 			this->label3->Text = L"2. Para ver las instrucciones, presione aquí";
 			// 
@@ -150,13 +134,14 @@ namespace Proyecto1MeganMorales122112001 {
 			// 
 			this->btIntrucciones->BackColor = System::Drawing::Color::White;
 			this->btIntrucciones->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->btIntrucciones->Location = System::Drawing::Point(690, 403);
-			this->btIntrucciones->Margin = System::Windows::Forms::Padding(2);
+			this->btIntrucciones->Location = System::Drawing::Point(445, 274);
+			this->btIntrucciones->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btIntrucciones->Name = L"btIntrucciones";
-			this->btIntrucciones->Size = System::Drawing::Size(110, 29);
+			this->btIntrucciones->Size = System::Drawing::Size(147, 36);
 			this->btIntrucciones->TabIndex = 7;
 			this->btIntrucciones->Text = L"INSTRUCCIONES";
 			this->btIntrucciones->UseVisualStyleBackColor = false;
+			this->btIntrucciones->Click += gcnew System::EventHandler(this, &MyForm::btIntrucciones_Click);
 			// 
 			// label4
 			// 
@@ -164,10 +149,9 @@ namespace Proyecto1MeganMorales122112001 {
 			this->label4->BackColor = System::Drawing::Color::White;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(637, 517);
-			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label4->Location = System::Drawing::Point(15, 351);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(240, 17);
+			this->label4->Size = System::Drawing::Size(280, 20);
 			this->label4->TabIndex = 8;
 			this->label4->Text = L"3. Para salir del juego, presione aquí";
 			// 
@@ -175,10 +159,10 @@ namespace Proyecto1MeganMorales122112001 {
 			// 
 			this->button3->BackColor = System::Drawing::Color::White;
 			this->button3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->button3->Location = System::Drawing::Point(690, 559);
-			this->button3->Margin = System::Windows::Forms::Padding(2);
+			this->button3->Location = System::Drawing::Point(445, 351);
+			this->button3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(110, 29);
+			this->button3->Size = System::Drawing::Size(147, 36);
 			this->button3->TabIndex = 9;
 			this->button3->Text = L"SALIDA";
 			this->button3->UseVisualStyleBackColor = false;
@@ -188,10 +172,10 @@ namespace Proyecto1MeganMorales122112001 {
 			// 
 			this->btMoDificl->BackColor = System::Drawing::Color::White;
 			this->btMoDificl->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->btMoDificl->Location = System::Drawing::Point(690, 268);
-			this->btMoDificl->Margin = System::Windows::Forms::Padding(2);
+			this->btMoDificl->Location = System::Drawing::Point(445, 191);
+			this->btMoDificl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btMoDificl->Name = L"btMoDificl";
-			this->btMoDificl->Size = System::Drawing::Size(110, 29);
+			this->btMoDificl->Size = System::Drawing::Size(147, 36);
 			this->btMoDificl->TabIndex = 10;
 			this->btMoDificl->Text = L"MODO DIFÍCIL";
 			this->btMoDificl->UseVisualStyleBackColor = false;
@@ -200,30 +184,20 @@ namespace Proyecto1MeganMorales122112001 {
 			// 
 			this->btMoMedio->BackColor = System::Drawing::Color::White;
 			this->btMoMedio->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->btMoMedio->Location = System::Drawing::Point(690, 209);
-			this->btMoMedio->Margin = System::Windows::Forms::Padding(2);
+			this->btMoMedio->Location = System::Drawing::Point(445, 150);
+			this->btMoMedio->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btMoMedio->Name = L"btMoMedio";
-			this->btMoMedio->Size = System::Drawing::Size(110, 29);
+			this->btMoMedio->Size = System::Drawing::Size(147, 36);
 			this->btMoMedio->TabIndex = 11;
 			this->btMoMedio->Text = L"MODO MEDIO";
 			this->btMoMedio->UseVisualStyleBackColor = false;
 			// 
-			// pictureBox1
-			// 
-			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
-			this->pictureBox1->Location = System::Drawing::Point(29, 85);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(2);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(512, 623);
-			this->pictureBox1->TabIndex = 1;
-			this->pictureBox1->TabStop = false;
-			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(916, 747);
+			this->ClientSize = System::Drawing::Size(671, 497);
 			this->Controls->Add(this->btMoMedio);
 			this->Controls->Add(this->btMoDificl);
 			this->Controls->Add(this->button3);
@@ -232,14 +206,12 @@ namespace Proyecto1MeganMorales122112001 {
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->btMoFácil);
 			this->Controls->Add(this->label2);
-			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"MyForm";
 			this->Text = L"COLORMANÍA";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -254,11 +226,18 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	this->Close();
 }
 private: System::Void btMoFácil_Click(System::Object^ sender, System::EventArgs^ e) {
-	MyForm1 ^ My = gcnew MyForm1();	
+	MyForm1 ^ My_Form1 = gcnew MyForm1();
 	this->Hide();
-	My->Show();
+	My_Form1->ShowDialog();
+	this->Show();
 	
 
+}
+private: System::Void btIntrucciones_Click(System::Object^ sender, System::EventArgs^ e) {
+	Instrucciones^ BtInstrucciones = gcnew Instrucciones();
+	this->Hide();
+	BtInstrucciones->ShowDialog();
+	this->Show();
 
 }
 };

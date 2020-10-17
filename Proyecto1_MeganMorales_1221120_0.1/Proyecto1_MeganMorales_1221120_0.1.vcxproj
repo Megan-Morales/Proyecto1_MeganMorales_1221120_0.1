@@ -120,6 +120,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Instrucciones.cpp" />
     <ClCompile Include="List.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="MyForm1.cpp" />
@@ -128,6 +129,9 @@
     <ClCompile Include="Stack.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Instrucciones.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="List.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
@@ -140,6 +144,9 @@
     <ClInclude Include="Stack.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Instrucciones.resx">
+      <DependentUpon>Instrucciones.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
     </EmbeddedResource>
