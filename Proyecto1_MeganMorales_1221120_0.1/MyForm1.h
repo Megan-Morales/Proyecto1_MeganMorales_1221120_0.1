@@ -56,8 +56,10 @@ namespace Proyecto1MeganMorales122112001 {
 	private: System::Windows::Forms::Label^ label22;
 	private: System::Windows::Forms::Label^ label23;
 	private: System::Windows::Forms::Label^ label24;
-	/*Para almacenar el historial de movimientos*/	  
+
+		   /*Para almacenar el historial de movimientos*/
 	public: String^ reporte;
+	public: String^ reporte1;
 	public:
 		MyForm1(void)
 		{
@@ -503,9 +505,9 @@ namespace Proyecto1MeganMorales122112001 {
 			// lstLista
 			// 
 			this->lstLista->FormattingEnabled = true;
-			this->lstLista->Location = System::Drawing::Point(741, 236);
+			this->lstLista->Location = System::Drawing::Point(751, 238);
 			this->lstLista->Name = L"lstLista";
-			this->lstLista->Size = System::Drawing::Size(128, 316);
+			this->lstLista->Size = System::Drawing::Size(222, 316);
 			this->lstLista->TabIndex = 19;
 			this->lstLista->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm1::listBox1_SelectedIndexChanged);
 			// 
@@ -514,7 +516,7 @@ namespace Proyecto1MeganMorales122112001 {
 			this->button2->BackColor = System::Drawing::Color::White;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(767, 558);
+			this->button2->Location = System::Drawing::Point(820, 568);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(87, 39);
 			this->button2->TabIndex = 20;
@@ -528,7 +530,7 @@ namespace Proyecto1MeganMorales122112001 {
 			this->label10->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label10->Location = System::Drawing::Point(764, 208);
+			this->label10->Location = System::Drawing::Point(817, 208);
 			this->label10->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(74, 16);
@@ -632,7 +634,7 @@ namespace Proyecto1MeganMorales122112001 {
 			this->button7->BackColor = System::Drawing::Color::MistyRose;
 			this->button7->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button7->Location = System::Drawing::Point(791, 8);
+			this->button7->Location = System::Drawing::Point(928, 14);
 			this->button7->Name = L"button7";
 			this->button7->Size = System::Drawing::Size(78, 39);
 			this->button7->TabIndex = 30;
@@ -645,7 +647,7 @@ namespace Proyecto1MeganMorales122112001 {
 			this->button8->BackColor = System::Drawing::Color::MistyRose;
 			this->button8->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button8->Location = System::Drawing::Point(791, 52);
+			this->button8->Location = System::Drawing::Point(928, 59);
 			this->button8->Name = L"button8";
 			this->button8->Size = System::Drawing::Size(78, 39);
 			this->button8->TabIndex = 31;
@@ -888,7 +890,7 @@ namespace Proyecto1MeganMorales122112001 {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(881, 722);
+			this->ClientSize = System::Drawing::Size(1018, 722);
 			this->Controls->Add(this->label21);
 			this->Controls->Add(this->label22);
 			this->Controls->Add(this->label23);
@@ -1027,6 +1029,7 @@ private: System::Void btnIniciar_Click(System::Object^ sender, System::EventArgs
 	label21->Show();
 	btnScola->Show();
 	btnSpila->Show();
+	lstLista->Items->Clear();
 	//Carga el archivo
 	Stream^ myStream;
 	OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog;
@@ -1153,7 +1156,20 @@ private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e
 		this->Close();
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		//Boton para guardar el reporte
+		Stream^ myStream;
+		SaveFileDialog^ saveFileDialog1 = gcnew SaveFileDialog;
+		if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+
+			//Utilizo el objeto System::IO::File para guardar el texto
+			//Importante haber llamado al namespace System::IO antes de usar File
+
+			File::WriteAllText(saveFileDialog1->FileName, reporte1);
+			MessageBox::Show("Archivo guardado exitosamente"
+				, "Operación exitosa"
+				, MessageBoxButtons::OK
+				, MessageBoxIcon::Information);
+		}
+
 }
 private: System::Void btnSManual_Click(System::Object^ sender, System::EventArgs^ e) {
 	button2->Enabled = true;
@@ -1286,9 +1302,11 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				temp = milist1->ExtractAtEnd();
 				milist1->InsertAtStart(temp->value);
 				repintar(1);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar +"| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
+
 			return;
 		}
 		if (pilaExtraer == 0 && pilaAgregar == 1) {
@@ -1298,7 +1316,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(1);
 				milist2->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 2);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1306,7 +1325,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(1);
 				milist2->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 2);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1319,7 +1339,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 					repintar(1);
 					milist3->InsertAtStart(temp->value);
 					Pintardatagrid(1, temp->value, 3);
-					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 					LlenarListBox(0);
 				}
 				else {
@@ -1327,7 +1348,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 					repintar(1);
 					milist3->InsertAtStart(temp->value);
 					Pintardatagrid(1, temp->value, 3);
-					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 					LlenarListBox(0);
 				}
 				return;
@@ -1344,7 +1366,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 					repintar(1);
 					milist4->InsertAtStart(temp->value);
 					Pintardatagrid(1, temp->value, 7);
-					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 					LlenarListBox(0);
 				}
 				else {
@@ -1352,7 +1375,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 					repintar(1);
 					milist4->InsertAtStart(temp->value);
 					Pintardatagrid(1, temp->value, 7);
-					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 					LlenarListBox(0);
 				}
 				return;
@@ -1369,7 +1393,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 					repintar(1);
 					milist5->InsertAtStart(temp->value);
 					Pintardatagrid(1, temp->value, 8);
-					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 					LlenarListBox(0);
 				}
 				else {
@@ -1377,7 +1402,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 					repintar(1);
 					milist5->InsertAtStart(temp->value);
 					Pintardatagrid(1, temp->value, 8);
-					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 					LlenarListBox(0);
 				}
 				return;
@@ -1394,7 +1420,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 					repintar(1);
 					milist6->InsertAtStart(temp->value);
 					Pintardatagrid(1, temp->value, 9);
-					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 					LlenarListBox(0);
 				}
 				else {
@@ -1402,7 +1429,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 					repintar(1);
 					milist6->InsertAtStart(temp->value);
 					Pintardatagrid(1, temp->value, 9);
-					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 					LlenarListBox(0);
 				}
 				return;
@@ -1419,7 +1447,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 					repintar(1);
 					milist7->InsertAtStart(temp->value);
 					Pintardatagrid(1, temp->value, 10);
-					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 					LlenarListBox(0);
 				}
 				else {
@@ -1427,7 +1456,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 					repintar(1);
 					milist7->InsertAtStart(temp->value);
 					Pintardatagrid(1, temp->value, 10);
-					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 					LlenarListBox(0);
 				}
 				return;
@@ -1444,7 +1474,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 					repintar(1);
 					milist8->InsertAtStart(temp->value);
 					Pintardatagrid(1, temp->value, 11);
-					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 					LlenarListBox(0);
 				}
 				else {
@@ -1452,7 +1483,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 					repintar(1);
 					milist8->InsertAtStart(temp->value);
 					Pintardatagrid(1, temp->value, 11);
-					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 					LlenarListBox(0);
 				}
 				return;
@@ -1471,7 +1503,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(2);
 				milist1->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 1);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1479,7 +1512,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(2);
 				milist1->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 1);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1492,130 +1526,173 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				temp = milist2->ExtractAtEnd();
 				milist2->InsertAtStart(temp->value);
 				repintar(2);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
 		}
-		if (pilaExtraer == 1 && pilaAgregar == 2) {
-			Node* temp;
-			if (formaExtraer == 0) {
-				temp = milist2->ExtractAtStart();
-				repintar(2);
-				milist3->InsertAtStart(temp->value);
-				Pintardatagrid(1, temp->value, 3);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
-				LlenarListBox(0);
+		if (milist3->count>0) {
+			if (pilaExtraer == 1 && pilaAgregar == 2) {
+				Node* temp;
+				if (formaExtraer == 0) {
+					temp = milist2->ExtractAtStart();
+					repintar(2);
+					milist3->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 3);
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+					LlenarListBox(0);
+				}
+				else {
+					temp = milist2->ExtractAtEnd();
+					repintar(2);
+					milist3->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 3);
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+					LlenarListBox(0);;
+				}
+				return;
 			}
-			else {
-				temp = milist2->ExtractAtEnd();
-				repintar(2);
-				milist3->InsertAtStart(temp->value);
-				Pintardatagrid(1, temp->value, 3);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
-				LlenarListBox(0);
-			}
-			return;
 		}
-		if (pilaExtraer == 1 && pilaAgregar == 3) {
-			Node* temp;
-			if (formaExtraer == 0) {
-				temp = milist2->ExtractAtStart();
-				repintar(2);
-				milist4->InsertAtStart(temp->value);
-				Pintardatagrid(1, temp->value, 7);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
-				LlenarListBox(0);
-			}
-			else {
-				temp = milist2->ExtractAtEnd();
-				repintar(2);
-				milist4->InsertAtStart(temp->value);
-				Pintardatagrid(1, temp->value, 7);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
-				LlenarListBox(0);
-			}
-			return;
+		else {
+			dataGridView3->Hide();
 		}
-		if (pilaExtraer == 1 && pilaAgregar == 4) {
-			Node* temp;
-			if (formaExtraer == 0) {
-				temp = milist2->ExtractAtStart();
-				repintar(2);
-				milist5->InsertAtStart(temp->value);
-				Pintardatagrid(1, temp->value, 8);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
-				LlenarListBox(0);
+		if (milist4->count > 0) {
+			if (pilaExtraer == 1 && pilaAgregar == 3) {
+				Node* temp;
+				if (formaExtraer == 0) {
+					temp = milist2->ExtractAtStart();
+					repintar(2);
+					milist4->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 7);
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+					LlenarListBox(0);
+				}
+				else {
+					temp = milist2->ExtractAtEnd();
+					repintar(2);
+					milist4->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 7);
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+					LlenarListBox(0);
+				}
+				return;
 			}
-			else {
-				temp = milist2->ExtractAtEnd();
-				repintar(2);
-				milist5->InsertAtStart(temp->value);
-				Pintardatagrid(1, temp->value, 8);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
-				LlenarListBox(0);
-			}
-			return;
 		}
-		if (pilaExtraer == 1 && pilaAgregar == 5) {
-			Node* temp;
-			if (formaExtraer == 0) {
-				temp = milist2->ExtractAtStart();
-				repintar(2);
-				milist6->InsertAtStart(temp->value);
-				Pintardatagrid(1, temp->value, 9);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
-				LlenarListBox(0);
-			}
-			else {
-				temp = milist2->ExtractAtEnd();
-				repintar(2);
-				milist6->InsertAtStart(temp->value);
-				Pintardatagrid(1, temp->value, 9);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
-				LlenarListBox(0);
-			}
-			return;
+		else {
+			dataGridView7->Hide();
 		}
-		if (pilaExtraer == 1 && pilaAgregar == 6) {
-			Node* temp;
-			if (formaExtraer == 0) {
-				temp = milist2->ExtractAtStart();
-				repintar(2);
-				milist7->InsertAtStart(temp->value);
-				Pintardatagrid(1, temp->value, 10);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
-				LlenarListBox(0);
+		if (milist5->count > 0) {
+			if (pilaExtraer == 1 && pilaAgregar == 4) {
+				Node* temp;
+				if (formaExtraer == 0) {
+					temp = milist2->ExtractAtStart();
+					repintar(2);
+					milist5->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 8);
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+					LlenarListBox(0);
+				}
+				else {
+					temp = milist2->ExtractAtEnd();
+					repintar(2);
+					milist5->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 8);
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+					LlenarListBox(0);
+				}
+				return;
 			}
-			else {
-				temp = milist2->ExtractAtEnd();
-				repintar(2);
-				milist7->InsertAtStart(temp->value);
-				Pintardatagrid(1, temp->value, 10);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
-				LlenarListBox(0);
-			}
-			return;
 		}
-		if (pilaExtraer == 1 && pilaAgregar == 7) {
-			Node* temp;
-			if (formaExtraer == 0) {
-				temp = milist2->ExtractAtStart();
-				repintar(2);
-				milist8->InsertAtStart(temp->value);
-				Pintardatagrid(1, temp->value, 11);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
-				LlenarListBox(0);
+		else {
+			dataGridView8->Hide();
+		}
+		if (milist6->count > 0) {
+			if (pilaExtraer == 1 && pilaAgregar == 5) {
+				Node* temp;
+				if (formaExtraer == 0) {
+					temp = milist2->ExtractAtStart();
+					repintar(2);
+					milist6->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 9);
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+					LlenarListBox(0);
+				}
+				else {
+					temp = milist2->ExtractAtEnd();
+					repintar(2);
+					milist6->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 9);
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+					LlenarListBox(0);
+				}
+				return;
 			}
-			else {
-				temp = milist2->ExtractAtEnd();
-				repintar(2);
-				milist8->InsertAtStart(temp->value);
-				Pintardatagrid(1, temp->value, 11);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
-				LlenarListBox(0);
+		}
+		else {
+			dataGridView9->Hide();
+		}
+		if (milist7->count > 0) {
+			if (pilaExtraer == 1 && pilaAgregar == 6) {
+				Node* temp;
+				if (formaExtraer == 0) {
+					temp = milist2->ExtractAtStart();
+					repintar(2);
+					milist7->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 10);
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+					LlenarListBox(0);
+				}
+				else {
+					temp = milist2->ExtractAtEnd();
+					repintar(2);
+					milist7->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 10);
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+					LlenarListBox(0);
+				}
+				return;
 			}
-			return;
+		}
+		else {
+			dataGridView10->Hide();
+		}
+		if (milist8->count > 0) {
+			if (pilaExtraer == 1 && pilaAgregar == 7) {
+				Node* temp;
+				if (formaExtraer == 0) {
+					temp = milist2->ExtractAtStart();
+					repintar(2);
+					milist8->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 11);
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+					LlenarListBox(0);
+				}
+				else {
+					temp = milist2->ExtractAtEnd();
+					repintar(2);
+					milist8->InsertAtStart(temp->value);
+					Pintardatagrid(1, temp->value, 11);
+					reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+					reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+					LlenarListBox(0);
+				}
+				return;
+			}
+		}
+		else {
+			dataGridView11->Hide();
 		}
 	}
 	if (milist3->count > 0) {
@@ -1627,7 +1704,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(3);
 				milist1->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 1);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1635,7 +1713,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(3);
 				milist1->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 1);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1647,7 +1726,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(3);
 				milist2->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 2);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1655,7 +1735,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(3);
 				milist2->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 2);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1668,7 +1749,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				temp = milist3->ExtractAtEnd();
 				milist3->InsertAtStart(temp->value);
 				repintar(3);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1680,7 +1762,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(3);
 				milist4->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 7);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1688,7 +1771,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(3);
 				milist4->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 7);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1700,7 +1784,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(3);
 				milist5->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 8);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1708,7 +1793,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(3);
 				milist5->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 8);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1720,7 +1806,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(3);
 				milist6->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 9);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1728,7 +1815,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(3);
 				milist6->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 9);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1740,7 +1828,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(3);
 				milist7->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 10);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1748,7 +1837,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(3);
 				milist7->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 10);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1760,7 +1850,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(3);
 				milist8->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 11);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1768,7 +1859,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(3);
 				milist8->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 11);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1783,7 +1875,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(4);
 				milist1->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 1);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1791,7 +1884,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(4);
 				milist1->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 1);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1803,7 +1897,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(4);
 				milist2->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 2);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1811,7 +1906,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(4);
 				milist2->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 2);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1823,7 +1919,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(4);
 				milist3->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 3);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1831,7 +1928,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(4);
 				milist3->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 3);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1844,7 +1942,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				temp = milist4->ExtractAtEnd();
 				milist4->InsertAtStart(temp->value);
 				repintar(4);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1856,7 +1955,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(4);
 				milist5->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 8);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1864,7 +1964,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(4);
 				milist5->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 8);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1876,7 +1977,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(4);
 				milist6->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 9);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1884,7 +1986,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(4);
 				milist6->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 9);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1896,7 +1999,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(4);
 				milist7->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 10);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1904,7 +2008,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(4);
 				milist7->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 10);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1916,7 +2021,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(4);
 				milist8->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 11);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1924,7 +2030,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(4);
 				milist8->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 11);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1939,7 +2046,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(5);
 				milist1->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 1);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1947,7 +2055,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(5);
 				milist1->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 1);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1959,7 +2068,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(5);
 				milist2->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 2);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1967,7 +2077,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(5);
 				milist2->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 2);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1979,7 +2090,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(5);
 				milist3->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 3);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -1987,7 +2099,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(5);
 				milist3->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 3);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -1999,7 +2112,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(5);
 				milist4->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 7);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2007,7 +2121,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(5);
 				milist4->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 7);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2020,7 +2135,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				temp = milist5->ExtractAtEnd();
 				milist5->InsertAtStart(temp->value);
 				repintar(5);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2032,7 +2148,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(5);
 				milist6->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 9);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2040,7 +2157,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(5);
 				milist6->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 9);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2052,7 +2170,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(5);
 				milist7->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 10);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2060,7 +2179,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(5);
 				milist7->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 10);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2072,7 +2192,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(5);
 				milist8->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 11);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2080,7 +2201,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(5);
 				milist8->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 11);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2095,7 +2217,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(6);
 				milist1->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 1);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2103,7 +2226,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(6);
 				milist1->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 1);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2115,7 +2239,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(6);
 				milist2->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 2);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2123,7 +2248,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(6);
 				milist2->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 2);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2135,7 +2261,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(6);
 				milist3->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 3);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2143,7 +2270,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(6);
 				milist3->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 3);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2155,7 +2283,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(6);
 				milist4->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 7);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2163,7 +2292,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(6);
 				milist4->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 7);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2175,7 +2305,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(6);
 				milist5->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 8);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2183,7 +2314,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(6);
 				milist5->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 8);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2196,7 +2328,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				temp = milist6->ExtractAtEnd();
 				milist6->InsertAtStart(temp->value);
 				repintar(6);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2208,7 +2341,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(6);
 				milist7->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 10);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2216,7 +2350,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(6);
 				milist7->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 10);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2228,7 +2363,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(6);
 				milist8->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 11);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2236,7 +2372,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(6);
 				milist8->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 11);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2251,7 +2388,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(7);
 				milist1->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 1);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2259,7 +2397,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(7);
 				milist1->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 1);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2271,7 +2410,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(7);
 				milist2->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 2);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2279,7 +2419,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(7);
 				milist2->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 2);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2291,7 +2432,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(7);
 				milist3->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 3);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2299,7 +2441,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(7);
 				milist3->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 3);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2311,7 +2454,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(7);
 				milist4->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 7);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2319,7 +2463,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(7);
 				milist4->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 7);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2331,7 +2476,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(7);
 				milist5->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 8);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2339,7 +2485,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(7);
 				milist5->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 8);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2351,7 +2498,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(7);
 				milist6->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 9);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 
 			}
@@ -2360,7 +2508,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(7);
 				milist6->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 9);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2373,7 +2522,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				temp = milist7->ExtractAtEnd();
 				milist7->InsertAtStart(temp->value);
 				repintar(7);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2385,7 +2535,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(7);
 				milist8->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 11);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2393,7 +2544,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(7);
 				milist8->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 11);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2408,7 +2560,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(8);
 				milist1->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 1);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2416,7 +2569,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(8);
 				milist1->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 1);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2428,7 +2582,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(8);
 				milist2->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 2);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2436,7 +2591,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(8);
 				milist2->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 2);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2448,7 +2604,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(8);
 				milist3->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 3);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2456,7 +2613,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(8);
 				milist3->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 3);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2468,7 +2626,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(8);
 				milist4->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 7);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2476,7 +2635,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(8);
 				milist4->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 7);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2488,7 +2648,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(8);
 				milist5->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 8);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2496,7 +2657,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(8);
 				milist5->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 8);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2508,15 +2670,17 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(8);
 				milist6->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 9);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
 				temp = milist8->ExtractAtEnd();
 				repintar(8);
 				milist6->InsertAtStart(temp->value);
-				Pintardatagrid(1, temp->value, 9);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				Pintardatagrid(1, temp->value, 9);	
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2528,7 +2692,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(8);
 				milist7->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 10);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo pila |";
 				LlenarListBox(0);
 			}
 			else {
@@ -2536,7 +2701,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				repintar(8);
 				milist7->InsertAtStart(temp->value);
 				Pintardatagrid(1, temp->value, 10);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -2549,7 +2715,8 @@ void solucionManual(int pilaExtraer, int pilaAgregar, int formaExtraer) {
 				temp = milist8->ExtractAtEnd();
 				milist8->InsertAtStart(temp->value);
 				repintar(8);
-				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "Modo cola";
+				reporte = "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
+				reporte1 += "P" + pilaExtraer + "-P" + pilaAgregar + "| Modo cola |";
 				LlenarListBox(0);
 			}
 			return;
@@ -3060,9 +3227,7 @@ void validarColorSM(int valor, int noPila) {
 		return;
 	}
 }
-
-void revolverValores() {
-
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
